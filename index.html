@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vasu — Portfolio</title>
+<meta name="description" content="Vasu — systems and Discord infrastructure, building toward AI for autonomous surveillance and drone platforms.">
+<meta name="theme-color" content="#F1EEE5">
+<meta property="og:title" content="Vasu — Portfolio">
+<meta property="og:description" content="Systems and Discord infrastructure. Long-term: AI for autonomous surveillance and drone platforms.">
+<meta property="og:image" content="avatar.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="avatar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #F1EEE5;
+    --paper: #E7E1D2;
+    --ink: #201F1A;
+    --ink-soft: #3B392E;
+    --ink-muted: #4B4839;
+    --moss: #3F4E36;
+    --moss-text: #243420;
+    --moss-soft: #C9D3BA;
+    --clay: #9A4A38;
+    --clay-text: #4A241C;
+    --clay-soft: rgba(154, 74, 56, 0.14);
+    --line: rgba(32, 31, 26, 0.16);
+    --sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --max-w: 760px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--clay-text);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Topbar */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(241, 238, 229, 0.86);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    max-width: var(--max-w); margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .server-icon { width: 26px; height: 26px; border-radius: 8px; object-fit: cover; border: 1px solid var(--line); }
+  .wordmark { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; }
+  .channels { display: flex; gap: 16px; flex-wrap: wrap; }
+  .channels a { font-family: var(--mono); font-size: 12.5px; color: var(--ink-muted); text-decoration: none; transition: color .15s ease; }
+  .channels a:hover { color: var(--moss-text); }
+
+  /* Hero */
+  .hero { max-width: var(--max-w); margin: 0 auto; padding: 56px 24px 48px; }
+  .hero-inner { display: flex; gap: 28px; align-items: flex-start; }
+  .avatar-frame { position: relative; width: 104px; height: 104px; border-radius: 24px; overflow: hidden; border: 1px solid var(--line); flex-shrink: 0; }
+  .avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .status-dot { position: absolute; bottom: 2px; right: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--moss); box-shadow: 0 0 0 3px var(--bone); }
+
+  .hero-text { flex: 1; min-width: 0; }
+  .status-line { font-family: var(--mono); font-size: 12.5px; color: var(--ink-muted); display: flex; align-items: center; gap: 8px; }
+  .status-line .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--moss); flex-shrink: 0; }
+  .hero-name { font-size: clamp(34px, 6vw, 46px); font-weight: 700; letter-spacing: -0.02em; margin-top: 10px; }
+  .role-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .role-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; padding: 5px 12px; border-radius: 999px; background: var(--moss-soft); color: var(--moss-text); }
+  .role-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--moss-text); }
+  .hero-bio { margin-top: 16px; font-size: 15.5px; color: var(--ink-soft); max-width: 440px; }
+  .hero-actions { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+
+  /* Buttons */
+  .btn { font-family: var(--mono); font-size: 13px; padding: 11px 20px; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all .15s ease; border: 1px solid transparent; }
+  .btn-fill { background: var(--moss); color: var(--bone); font-weight: 600; }
+  .btn-fill:hover { background: var(--moss-text); }
+  .btn-line { border-color: var(--line); color: var(--ink); background: var(--paper); }
+  .btn-line:hover { border-color: var(--moss-text); color: var(--moss-text); }
+
+  /* Blocks */
+  .block { max-width: var(--max-w); margin: 0 auto; padding: 52px 24px; border-top: 1px solid var(--line); }
+  .block-head { margin-bottom: 20px; }
+  .block-tag { font-family: var(--mono); font-size: 14px; color: var(--moss-text); font-weight: 600; }
+  .block-topic { font-family: var(--mono); font-size: 12px; color: var(--ink-muted); margin-top: 4px; }
+  .block p { font-size: 15.5px; max-width: 620px; }
+  .block p + p { margin-top: 14px; }
+  .block p strong { font-weight: 600; }
+
+  /* Panels / cards */
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin-top: 16px; }
+  .panel.featured { border-color: var(--moss); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .card-top h3 { font-size: 16.5px; font-weight: 600; }
+  .meta-tag { font-family: var(--mono); font-size: 11.5px; color: var(--ink-muted); background: var(--bone); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .panel p { margin-top: 10px; color: var(--ink-soft); font-size: 14.5px; }
+
+  .draft-tag { font-family: var(--mono); font-size: 11px; color: var(--clay-text); background: var(--clay-soft); border: 1px solid rgba(154,74,56,0.35); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .placeholder { color: var(--ink-muted); font-style: italic; border-left: 2px dashed rgba(154,74,56,0.5); padding-left: 12px; margin-top: 12px; }
+
+  .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+  .role-grid h4 { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); margin-bottom: 6px; }
+  .role-grid .placeholder { margin-top: 0; }
+
+  .idea-row { display: flex; gap: 14px; align-items: flex-start; margin-top: 18px; padding: 16px 18px; border: 1px dashed var(--line); border-radius: 14px; }
+  .idea-row p { margin-top: 0 !important; color: var(--ink-soft); font-size: 14.5px; }
+  .idea-row strong { font-weight: 600; color: var(--ink); }
+  .idea-tag { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px; flex-shrink: 0; margin-top: 2px; white-space: nowrap; }
+
+  /* Permission list (stack section signature) */
+  .perm-panel { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 4px 24px; margin-top: 16px; }
+  .perm-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .perm-row:last-child { border-bottom: none; }
+  .perm-label { font-size: 14.5px; display: flex; flex-direction: column; gap: 2px; }
+  .mono-bit { font-family: var(--mono); font-size: 11.5px; color: var(--ink-muted); }
+  .perm-toggle { width: 34px; height: 18px; border-radius: 999px; background: var(--moss); position: relative; flex-shrink: 0; }
+  .perm-toggle::after { content: ""; position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--bone); }
+
+  .contact-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+
+  /* Footer */
+  .site-footer { max-width: var(--max-w); margin: 0 auto; padding: 36px 24px 56px; }
+  .site-footer p { font-family: var(--mono); font-size: 11.5px; color: var(--ink-muted); }
+  .site-footer a { color: var(--ink-muted); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* Page-load reveal */
+  .reveal { opacity: 0; transform: translateY(14px); animation: rise .6s ease forwards; animation-delay: calc(0.05s + var(--d, 0) * 0.08s); }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { animation: none; opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-inner { flex-direction: column; }
+    .role-grid { grid-template-columns: 1fr; }
+    .block { padding: 44px 20px; }
+    .hero { padding: 48px 20px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img class="server-icon" src="avatar.png" alt="">
+      <span class="wordmark">vasu</span>
+    </div>
+    <nav class="channels">
+      <a href="#about">#about</a>
+      <a href="#experience">#experience</a>
+      <a href="#stack">#stack</a>
+      <a href="#projects">#projects</a>
+      <a href="#contact">#contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero reveal" id="top" style="--d:0">
+  <div class="hero-inner">
+    <div class="avatar-frame">
+      <img src="avatar.png" alt="Vasu">
+      <span class="status-dot"></span>
+    </div>
+    <div class="hero-text">
+      <p class="status-line"><span class="dot"></span>drop year — JEE Advanced &amp; UGEE, 2027</p>
+      <h1 class="hero-name">Vasu</h1>
+      <div class="role-pills">
+        <span class="role-pill"><span class="role-dot"></span>systems</span>
+        <span class="role-pill"><span class="role-dot"></span>discord infra</span>
+        <span class="role-pill"><span class="role-dot"></span>ops</span>
+      </div>
+      <p class="hero-bio">Systems and ops first, code when it's actually needed — building toward AI for autonomous surveillance and drone platforms.</p>
+      <div class="hero-actions">
+        <a class="btn btn-fill" href="mailto:sanskar.ch.inbox@gmail.com">Email me</a>
+        <a class="btn btn-line" href="https://github.com/VasuCoded/" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal" id="about" style="--d:1">
+  <div class="block-head">
+    <div class="block-tag"># about</div>
+    <p class="block-topic">no fluff, what I actually do</p>
+  </div>
+  <p>I lean product and systems over pure development. Given a problem, I'd rather work out how the whole thing should run and drive the process to ship it — then write the specific code that's actually missing, not the other way round.</p>
+  <p>Discord is the clearest example of this in practice. I've put real time into the infrastructure side of it — bots, permissions, moderation, anti-raid setup — not just sitting in servers as a member.</p>
+  <p>Longer term, I'm working toward <strong>AI systems for autonomous surveillance and drone platforms</strong>. The tools and ops work here are groundwork for that, even on the days it doesn't look like it.</p>
+</section>
+
+<section class="block reveal" id="experience" style="--d:2">
+  <div class="block-head">
+    <div class="block-tag"># experience</div>
+    <p class="block-topic">one line, but it's real</p>
+  </div>
+  <div class="panel">
+    <div class="card-top">
+      <h3>Event Team — Not Your Type (Discord)</h3>
+      <span class="meta-tag">2023 · ~1 yr</span>
+    </div>
+    <p>Ran events for a YouTuber's Discord community and built the integration that pulled the creator's live YouTube subscriber count straight into the server.</p>
+  </div>
+</section>
+
+<section class="block reveal" id="stack" style="--d:3">
+  <div class="block-head">
+    <div class="block-tag"># stack</div>
+    <p class="block-topic">permissions granted, not just used</p>
+  </div>
+  <div class="perm-panel">
+    <div class="perm-row"><span class="perm-label">Manage Roles &amp; Permissions</span><span class="perm-toggle"></span></div>
+    <div class="perm-row"><span class="perm-label">Raid Detection &amp; Auto-Lockdown</span><span class="perm-toggle"></span></div>
+    <div class="perm-row"><span class="perm-label">AutoMod &amp; Anti-Nuke Rules</span><span class="perm-toggle"></span></div>
+    <div class="perm-row"><span class="perm-label">Verification &amp; Captcha Gating</span><span class="perm-toggle"></span></div>
+    <div class="perm-row"><span class="perm-label">Bot Deployment<span class="mono-bit">discord.py / discord.js</span></span><span class="perm-toggle"></span></div>
+    <div class="perm-row"><span class="perm-label">Webhook &amp; REST API Integration</span><span class="perm-toggle"></span></div>
+    <div class="perm-row"><span class="perm-label">YouTube Data API Integration</span><span class="perm-toggle"></span></div>
+    <div class="perm-row"><span class="perm-label">Audit Log Monitoring</span><span class="perm-toggle"></span></div>
+  </div>
+</section>
+
+<section class="block reveal" id="projects" style="--d:4">
+  <div class="block-head">
+    <div class="block-tag"># projects</div>
+    <p class="block-topic">one real, one still loading</p>
+  </div>
+
+  <div class="panel featured">
+    <div class="card-top">
+      <h3>WhatNow</h3>
+      <span class="draft-tag">draft — needs your input</span>
+    </div>
+    <p class="placeholder">[What WhatNow actually does, in a line or two.]</p>
+    <div class="role-grid">
+      <div>
+        <h4>Dev</h4>
+        <p class="placeholder">[What you build / ship yourself.]</p>
+      </div>
+      <div>
+        <h4>Executive</h4>
+        <p class="placeholder">[Direction, decisions, ops you own.]</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="idea-row">
+    <span class="idea-tag">idea</span>
+    <p><strong>Veekh</strong> — self-hosted semantic image search: describe a photo in plain language, find it in your own library, nothing sent to a third-party API. Python/FastAPI, CLIP embeddings, Qdrant, MinIO. Early days, not built out yet.</p>
+  </div>
+</section>
+
+<section class="block reveal" id="contact" style="--d:5">
+  <div class="block-head">
+    <div class="block-tag"># contact</div>
+    <p class="block-topic">fastest way to reach me</p>
+  </div>
+  <p>Best way to reach me:</p>
+  <div class="contact-actions">
+    <a class="btn btn-fill" href="mailto:sanskar.ch.inbox@gmail.com">sanskar.ch.inbox@gmail.com</a>
+    <a class="btn btn-line" href="https://github.com/VasuCoded/" target="_blank" rel="noopener">github.com/VasuCoded ↗</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>Built with Claude, tuned by hand · © <span id="year"></span> Vasu</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
