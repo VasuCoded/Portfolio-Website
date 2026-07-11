@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import TopNav from "@/components/TopNav";
+import AppShell from "@/components/AppShell";
 import PageTransition from "@/components/PageTransition";
 
 const spaceGrotesk = Space_Grotesk({
@@ -38,9 +38,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
-      <body className="shell">
-        <TopNav />
-        <PageTransition>{children}</PageTransition>
+      <body>
+        <AppShell>
+          <PageTransition>{children}</PageTransition>
+        </AppShell>
       </body>
     </html>
   );
