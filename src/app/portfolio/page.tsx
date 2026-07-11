@@ -94,7 +94,7 @@ export default function Portfolio() {
                 <div className="spot-field">
                   <span className="spot-k">My role</span>
                   <p>
-                    Sole developer, building it end to end to learn how real-time collaborative
+                    Building it with a couple of friends to learn how real-time collaborative
                     software actually works — the sync, the presence, the WebRTC plumbing.
                   </p>
                 </div>
