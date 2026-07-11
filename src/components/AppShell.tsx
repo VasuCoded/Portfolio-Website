@@ -3,8 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CATEGORIES = [
   {
@@ -16,10 +15,7 @@ const CATEGORIES = [
   },
   {
     label: "showcase",
-    channels: [
-      { href: "/interests", label: "yapping" },
-      { href: "/portfolio", label: "portfolio" },
-    ],
+    channels: [{ href: "/portfolio", label: "portfolio" }],
   },
 ];
 
@@ -50,26 +46,12 @@ function ChannelList({ pathname, onNavigate }: { pathname: string; onNavigate?: 
   );
 }
 
-function ServerRail() {
-  return (
-    <div className="server-rail">
-      <div className="rail-icon-wrap">
-        <span className="rail-pill" style={{ height: 40 }} />
-        <div className="rail-icon">
-          <Image src="/avatar.png" alt="" width={48} height={48} />
-        </div>
-      </div>
-      <div className="rail-sep" />
-      <div className="rail-ghost" title="that's the whole server">
-        +
-      </div>
-    </div>
-  );
-}
-
 function SidebarHeader() {
   return (
     <div className="sidebar-header">
+      <div className="sidebar-header-icon">
+        <Image src="/avatar.png" alt="" width={34} height={34} />
+      </div>
       <div>
         <h1>vasu&apos;s server</h1>
         <p className="status-line">● 1 member online</p>
@@ -124,43 +106,33 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+  useEffect(() => {
+    // The drawer must close whenever the route actually changes underneath
+    // it — this is a real external-state sync, not a state-mirroring effect.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDrawerOpen(false);
+  }, [pathname]);
+
   return (
     <div className="app-shell">
-      <ServerRail />
       <div className="channel-sidebar">
         <SidebarHeader />
         <ChannelList pathname={pathname} />
         <UserPanel />
       </div>
 
-      <AnimatePresence>
-        {drawerOpen && (
-          <>
-            <motion.div
-              className="drawer-backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.18 }}
-              onClick={() => setDrawerOpen(false)}
-            />
-            <motion.div
-              className="drawer-panel"
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "spring", stiffness: 340, damping: 34 }}
-            >
-              <ServerRail />
-              <div className="channel-sidebar">
-                <SidebarHeader />
-                <ChannelList pathname={pathname} onNavigate={() => setDrawerOpen(false)} />
-                <UserPanel />
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      <div
+        className={`drawer-backdrop${drawerOpen ? " open" : ""}`}
+        onClick={() => setDrawerOpen(false)}
+        aria-hidden={!drawerOpen}
+      />
+      <div className={`drawer-panel${drawerOpen ? " open" : ""}`} aria-hidden={!drawerOpen}>
+        <div className="channel-sidebar">
+          <SidebarHeader />
+          <ChannelList pathname={pathname} onNavigate={() => setDrawerOpen(false)} />
+          <UserPanel />
+        </div>
+      </div>
 
       <div className="main-column">
         <div className="mobile-topbar">

@@ -1,0 +1,18 @@
+export const SCP_FACTS: string[] = [
+  "The SCP Foundation started in 2007 as a single creepypasta post on 4chan's /x/ board.",
+  "SCP-173, \"The Sculpture,\" was the very first SCP ever written — inspired by a photo of a Katayama Hiroto statue.",
+  "The whole wiki runs on Creative Commons licensing, so anyone can use, remix, or build on any entry for free.",
+  "There are well over 6,000 canonical SCP entries at this point, written by thousands of different authors.",
+  "The Foundation's motto is \"Secure, Contain, Protect.\"",
+  "SCPs get sorted by Object Class — Safe, Euclid, or Keter — based on how hard they are to contain, not how dangerous they are.",
+  "SCP-682, \"Hard to Destroy Reptile,\" is one of the most infamous entries — nearly impossible to permanently get rid of no matter what's tried.",
+  "SCP-096, \"The Shy Guy,\" became a full-blown meme mostly because of one rule: don't look at its face.",
+  "The wiki has been translated into 60+ languages by independent international fan branches.",
+  "Control (2019, Remedy Entertainment) openly cites the SCP Foundation as a tonal inspiration.",
+  "SCP-3008 imagines an infinite, endless IKEA — one of the most beloved \"explorable\" entries on the wiki.",
+  "\"There Is No Antimemetics Division,\" originally an SCP series by qntm, later got published as a standalone novel.",
+  "A volunteer staff structure keeps canon consistent across a wiki written by thousands of unrelated contributors.",
+  "Some entries skip the report format entirely — interview transcripts, chat logs, even fake edit histories.",
+  "SCP-999, \"The Tickle Monster,\" is deliberately one of the only wholesome, friendly entries in the whole catalog.",
+  "The tag system lets you filter the entire wiki by object class, containment type, \"humanoid,\" \"sentient,\" and dozens more.",
+];

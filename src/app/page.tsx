@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import ChannelHeader from "@/components/ChannelHeader";
+import ScpFactCard from "@/components/ScpFactCard";
 
 export default function Home() {
   return (
@@ -81,9 +82,9 @@ export default function Home() {
               <span className="idea-tag">pinned</span>
               <p>
                 Server created 2026 · boost level 0 · vibe: still under construction in a couple
-                spots. Three channels live here right now — <strong>#about-me</strong>{" "}
-                if you want the actual person, <strong>#yapping</strong>{" "}
-                for music and SCP lore, and <strong>#portfolio</strong>{" "}
+                spots. Two channels live here right now — <strong>#about-me</strong>{" "}
+                for the actual person plus what I yap about (music, SCP lore), and{" "}
+                <strong>#portfolio</strong>{" "}
                 for the stuff I&apos;ve built. Check the rail on the left (or the menu button on
                 mobile).
               </p>
@@ -99,7 +100,7 @@ export default function Home() {
           </Reveal>
           <div className="card-grid">
             <Reveal delay={0.04}>
-              <div className="perm-panel">
+              <div className="perm-panel" style={{ height: "100%" }}>
                 <div className="perm-row">
                   <span className="perm-label">Based around<span className="mono-bit">India</span></span>
                 </div>
@@ -113,6 +114,9 @@ export default function Home() {
                   <span className="perm-label">Long game<span className="mono-bit">AI for autonomous surveillance &amp; drones</span></span>
                 </div>
               </div>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <ScpFactCard />
             </Reveal>
           </div>
         </div>

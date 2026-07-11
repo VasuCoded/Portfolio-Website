@@ -3,7 +3,8 @@
 import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import ChannelHeader from "@/components/ChannelHeader";
-import ExpandableCard from "@/components/ExpandableCard";
+import SpotlightCard from "@/components/SpotlightCard";
+import { WhatNowIcon, CollabIcon, JugaadIcon } from "@/components/ProjectIcons";
 
 export default function Portfolio() {
   return (
@@ -18,97 +19,73 @@ export default function Portfolio() {
           </p>
         </Reveal>
 
-        {/* ---------------- WHATNOW ---------------- */}
-        <div className="section-gap">
-          <Reveal>
-            <ExpandableCard
-              featured
-              defaultOpen
-              title="Founder · WhatNow"
-              summary="honest exam & career guidance for India"
-              meta={
-                <span className="meta-tag live">
-                  <span className="dot-sm" style={{ background: "var(--moss-text)" }} />
-                  ongoing
-                </span>
-              }
-            >
-              <p>
-                A free platform for honest career and exam guidance in India — JEE, CLAT, UCEED,
-                plus careers most counselors never mention. No coaching kickbacks, no paywall.
-                Runs across a website, YouTube, Instagram, and Discord.
-              </p>
-              <div className="tech-chips">
-                <span className="tech-chip">Next.js</span>
-                <span className="tech-chip">Vercel</span>
-              </div>
-              <div className="role-grid">
-                <div>
-                  <h4>Dev</h4>
-                  <p style={{ color: "var(--ink-soft)", fontSize: 14 }}>
-                    Research and development on the site right now — features, content structure,
-                    what ships next, alongside the core dev.
-                  </p>
-                </div>
-                <div>
-                  <h4>Executive</h4>
-                  <p style={{ color: "var(--ink-soft)", fontSize: 14 }}>
-                    Founded it, recruited the initial team, wrote the ops manual covering
-                    outreach, writing &amp; research, dev, and design. Built the coordination
-                    system on Discord, Sheets/Docs, and Drive — chosen over Notion so every
-                    contributor could edit for free.
-                  </p>
-                </div>
-              </div>
-              <a
-                className="btn btn-fill btn-sm"
-                style={{ marginTop: 14 }}
-                href="https://whatnowindia.vercel.app/"
-                target="_blank"
-                rel="noopener"
-              >
-                Visit WhatNow ↗
-              </a>
-            </ExpandableCard>
-          </Reveal>
-
-          <div className="card-grid" style={{ marginTop: 12 }}>
-            <Reveal delay={0.04}>
-              <div className="idea-row" style={{ borderStyle: "solid" }}>
-                <span className="idea-tag">2023 · ~1yr</span>
-                <p>
-                  <strong>Event Manager, Not Your Type (Discord)</strong>
-                  {" "}— planned and hosted events for a YouTuber&apos;s community, including a
-                  live integration pulling the creator&apos;s sub count straight into the server.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <div className="idea-row" style={{ borderStyle: "solid" }}>
-                <span className="idea-tag">2024 · ~6mo</span>
-                <p>
-                  <strong>Event Team, Gohar&apos;s Guide (Discord)</strong>
-                  {" "}— events and day-to-day community management for another creator&apos;s
-                  server.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-
-        {/* ---------------- BUILDING NOW ---------------- */}
+        {/* ---------------- SPOTLIGHT ---------------- */}
         <div className="section-gap">
           <Reveal>
             <div className="block-head">
-              <div className="block-tag">building now</div>
+              <div className="block-tag"># the main three</div>
             </div>
           </Reveal>
 
-          <div className="card-grid">
+          <div className="spotlight-grid">
             <Reveal delay={0.04}>
-              <ExpandableCard
+              <SpotlightCard
+                icon={<WhatNowIcon />}
+                accent="var(--moss)"
+                title="WhatNow"
+                tagline="Founder · honest exam & career guidance"
+                meta={
+                  <span className="meta-tag live">
+                    <span className="dot-sm" style={{ background: "var(--moss-text)" }} />
+                    ongoing
+                  </span>
+                }
+              >
+                <p>
+                  A free platform for honest career and exam guidance in India — JEE, CLAT, UCEED,
+                  plus careers most counselors never mention. No coaching kickbacks, no paywall.
+                  Runs across a website, YouTube, Instagram, and Discord.
+                </p>
+                <div className="tech-chips">
+                  <span className="tech-chip">Next.js</span>
+                  <span className="tech-chip">Vercel</span>
+                </div>
+                <div className="role-grid">
+                  <div>
+                    <h4>Dev</h4>
+                    <p style={{ color: "var(--ink-soft)", fontSize: 14 }}>
+                      Research and development on the site right now — features, content
+                      structure, what ships next, alongside the core dev.
+                    </p>
+                  </div>
+                  <div>
+                    <h4>Executive</h4>
+                    <p style={{ color: "var(--ink-soft)", fontSize: 14 }}>
+                      Founded it, recruited the initial team, wrote the ops manual covering
+                      outreach, writing &amp; research, dev, and design. Built the coordination
+                      system on Discord, Sheets/Docs, and Drive — chosen over Notion so every
+                      contributor could edit for free.
+                    </p>
+                  </div>
+                </div>
+                <a
+                  className="btn btn-fill btn-sm"
+                  style={{ marginTop: 14 }}
+                  href="https://whatnowindia.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Visit WhatNow ↗
+                </a>
+              </SpotlightCard>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <SpotlightCard
+                icon={<CollabIcon />}
+                accent="var(--clay)"
                 title="Collab Platform"
-                summary="shared workspace, name TBD"
+                tagline="Founder & developer · shared workspace"
                 meta={<span className="draft-tag">very early</span>}
               >
                 <p>
@@ -132,13 +109,15 @@ export default function Portfolio() {
                 >
                   See it live ↗
                 </a>
-              </ExpandableCard>
+              </SpotlightCard>
             </Reveal>
 
-            <Reveal delay={0.08}>
-              <ExpandableCard
+            <Reveal delay={0.12}>
+              <SpotlightCard
+                icon={<JugaadIcon />}
+                accent="#7A5B1C"
                 title="Jugaad"
-                summary="Discord bot, live in a private server"
+                tagline="Creator · Discord bot, live in a private server"
                 meta={
                   <span className="meta-tag live">
                     <span className="dot-sm" style={{ background: "var(--moss-text)" }} />
@@ -165,7 +144,38 @@ export default function Portfolio() {
                   <span className="tech-chip">PM2</span>
                   <span className="tech-chip">Oracle Cloud (Ampere)</span>
                 </div>
-              </ExpandableCard>
+              </SpotlightCard>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* ---------------- EXPERIENCE ---------------- */}
+        <div className="section-gap">
+          <Reveal>
+            <div className="block-head">
+              <div className="block-tag">also on the résumé</div>
+            </div>
+          </Reveal>
+          <div className="card-grid">
+            <Reveal delay={0.04}>
+              <div className="idea-row" style={{ borderStyle: "solid" }}>
+                <span className="idea-tag">2023 · ~1yr</span>
+                <p>
+                  <strong>Event Manager, Not Your Type (Discord)</strong>
+                  {" "}— planned and hosted events for a YouTuber&apos;s community, including a
+                  live integration pulling the creator&apos;s sub count straight into the server.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <div className="idea-row" style={{ borderStyle: "solid" }}>
+                <span className="idea-tag">2024 · ~6mo</span>
+                <p>
+                  <strong>Event Team, Gohar&apos;s Guide (Discord)</strong>
+                  {" "}— events and day-to-day community management for another creator&apos;s
+                  server.
+                </p>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -198,11 +208,10 @@ export default function Portfolio() {
                 <p>
                   <strong>A second Discord bot</strong>, name TBD — a documentation-driven
                   server builder. Paste its schema docs into whatever LLM chat you already have
-                  open,
-                  describe the server you want, get back a structured plan the bot validates and
-                  executes through Discord&apos;s API. All the thinking happens outside the bot,
-                  for free. v1 is bootstrap-only — create, no destructive edits — same stack as
-                  Jugaad.
+                  open, describe the server you want, get back a structured plan the bot validates
+                  and executes through Discord&apos;s API. All the thinking happens outside the
+                  bot, for free. v1 is bootstrap-only — create, no destructive edits — same stack
+                  as Jugaad.
                 </p>
               </div>
             </Reveal>
