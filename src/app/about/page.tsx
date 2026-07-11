@@ -297,7 +297,7 @@ export default function About() {
               </div>
               <RandomChannelPick />
               <p style={{ marginTop: 10, fontSize: 12, color: "var(--ink-muted)", fontStyle: "italic" }}>
-                small pool for now — more channels landing here soon.
+                pulled from everything I actually watch, not just the four above.
               </p>
             </div>
           </Reveal>
