@@ -6,6 +6,9 @@ import ChannelHeader from "@/components/ChannelHeader";
 import ExpandableCard from "@/components/ExpandableCard";
 import RandomSongPick from "@/components/RandomSongPick";
 import RandomChannelPick from "@/components/RandomChannelPick";
+import NowSpinning from "@/components/NowSpinning";
+import ScpFactCard from "@/components/ScpFactCard";
+import ChannelIcon from "@/components/ChannelIcons";
 import { YT_CHANNELS } from "@/data/channels";
 
 const ADMIN_ARCHIVES_SAMPLE = [
@@ -23,6 +26,16 @@ const ON_REPEAT_SAMPLE = [
   "We Don't Talk Anymore — Charlie Puth, Selena Gomez",
   "There Is a Light That Never Goes Out — The Smiths",
 ];
+
+function DiscIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="12" cy="12" r="2.4" fill="currentColor" />
+      <path d="M12 3a9 9 0 0 1 8.5 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity="0.6" />
+    </svg>
+  );
+}
 
 export default function About() {
   return (
@@ -91,44 +104,7 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={0.04}>
-            <ExpandableCard
-              featured
-              defaultOpen
-              title="Two Moons — BoyWithUke"
-              summary="the current obsession, click for the rest of the case"
-              meta={
-                <span className="meta-tag live">
-                  <span className="eq-bars">
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                  </span>
-                  on repeat
-                </span>
-              }
-            >
-              <p>
-                BoyWithUke is the main event for me — the masked, ukulele-driven indie-pop project
-                that turns anxiety and heartbreak into something you can still bop to. Two Moons
-                is the one I&apos;d hand someone first, but Toxic, She Said No, and Tired of
-                Wanting You are all in heavy rotation too. Not a bit — genuinely what&apos;s been
-                stuck in my head for months.
-              </p>
-              <p>
-                Listen to basically everything else too — except rap and metal, those two just
-                never landed. What&apos;s actually on rotation changes constantly.
-              </p>
-              <a
-                className="btn btn-fill btn-sm"
-                style={{ marginTop: 12 }}
-                href="https://open.spotify.com/search/BoyWithUke%20Two%20Moons"
-                target="_blank"
-                rel="noopener"
-              >
-                Play it ↗
-              </a>
-            </ExpandableCard>
+            <NowSpinning />
           </Reveal>
 
           <div className="card-grid" style={{ marginTop: 12 }}>
@@ -136,17 +112,20 @@ export default function About() {
               <ExpandableCard
                 title="The Admin Archives"
                 summary="a Blend with two close friends"
-                meta={<span className="meta-tag">50 · 3h43</span>}
+                meta={
+                  <span className="playlist-pill">
+                    <DiscIcon />
+                    50 · 3h43
+                  </span>
+                }
               >
                 <p>
                   Spotify Blend where our three very different tastes collide — indie and alt-rock
                   running straight into Bollywood soundtracks, no genre-whiplash warnings.
                 </p>
-                <ul style={{ marginTop: 10, paddingLeft: 16, color: "var(--ink-muted)", fontSize: 13 }}>
+                <ul className="track-list">
                   {ADMIN_ARCHIVES_SAMPLE.map((t) => (
-                    <li key={t} style={{ marginTop: 3 }}>
-                      {t}
-                    </li>
+                    <li key={t}>{t}</li>
                   ))}
                 </ul>
               </ExpandableCard>
@@ -155,17 +134,20 @@ export default function About() {
               <ExpandableCard
                 title="On Repeat"
                 summary="Spotify's own read on right now"
-                meta={<span className="meta-tag">30 · 2h35</span>}
+                meta={
+                  <span className="playlist-pill">
+                    <DiscIcon />
+                    30 · 2h35
+                  </span>
+                }
               >
                 <p>
                   Currently leaning hard into Bollywood and film scores, which wasn&apos;t true a
                   month ago and probably won&apos;t be true a month from now.
                 </p>
-                <ul style={{ marginTop: 10, paddingLeft: 16, color: "var(--ink-muted)", fontSize: 13 }}>
+                <ul className="track-list">
                   {ON_REPEAT_SAMPLE.map((t) => (
-                    <li key={t} style={{ marginTop: 3 }}>
-                      {t}
-                    </li>
+                    <li key={t}>{t}</li>
                   ))}
                 </ul>
               </ExpandableCard>
@@ -173,10 +155,18 @@ export default function About() {
           </div>
 
           <Reveal delay={0.16}>
-            <div className="fact-card" style={{ marginTop: 12, borderColor: "var(--moss)" }}>
-              <div className="fact-eyebrow">
-                <span className="dot-sm" />
-                feeling lucky
+            <div className="shuffle-card" style={{ marginTop: 12 }}>
+              <div className="shuffle-eyebrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path
+                    d="M17 2l4 4-4 4M3 11V9a4 4 0 0 1 4-4h14M7 22l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                shuffle · pull a random track from my library
               </div>
               <RandomSongPick />
             </div>
@@ -229,7 +219,14 @@ export default function About() {
               </div>
             </div>
           </Reveal>
+
           <Reveal delay={0.08}>
+            <div style={{ marginTop: 12 }}>
+              <ScpFactCard />
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.12}>
             <a
               className="btn btn-line btn-sm"
               style={{ marginTop: 12 }}
@@ -260,27 +257,42 @@ export default function About() {
             {YT_CHANNELS.map((ch, i) => (
               <Reveal key={ch.name} delay={0.06 + i * 0.04}>
                 <a
-                  className="channel-card"
+                  className={`channel-card niche-${ch.niche}`}
                   href={ch.url}
                   target="_blank"
                   rel="noopener"
-                  style={{ textDecoration: "none" }}
+                  style={{ ["--accent" as string]: ch.accent } as React.CSSProperties}
                 >
-                  <div className="channel-badge">{ch.initials}</div>
-                  <div>
-                    <h4>{ch.name}</h4>
-                    <div className="ch-handle">{ch.topic}</div>
+                  <div className="channel-badge">
+                    <ChannelIcon niche={ch.niche} />
+                  </div>
+                  <div className="channel-body">
+                    <div className="channel-top">
+                      <h4>{ch.name}</h4>
+                      <span className="channel-niche-tag">{ch.topic}</span>
+                    </div>
                     <p>{ch.blurb}</p>
                   </div>
+                  <span className="channel-go" aria-hidden>
+                    ↗
+                  </span>
                 </a>
               </Reveal>
             ))}
           </div>
 
           <Reveal delay={0.24}>
-            <div className="fact-card" style={{ marginTop: 12, borderColor: "var(--clay)" }}>
-              <div className="fact-eyebrow">
-                <span className="dot-sm" style={{ background: "var(--clay-text)" }} />
+            <div className="shuffle-card" style={{ marginTop: 12, borderColor: "var(--clay)" }}>
+              <div className="shuffle-eyebrow" style={{ color: "var(--clay-text)" }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path
+                    d="M17 2l4 4-4 4M3 11V9a4 4 0 0 1 4-4h14M7 22l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
                 random channel pick
               </div>
               <RandomChannelPick />

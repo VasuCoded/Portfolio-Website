@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import ChannelHeader from "@/components/ChannelHeader";
-import ScpFactCard from "@/components/ScpFactCard";
+import Whiteboard from "@/components/Whiteboard";
 
 export default function Home() {
   return (
@@ -116,7 +116,7 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={0.08}>
-              <ScpFactCard />
+              <Whiteboard />
             </Reveal>
           </div>
         </div>
