@@ -146,8 +146,8 @@ export default function Portfolio() {
                 <div className="spot-field">
                   <span className="spot-k">The vision</span>
                   <p>
-                    One bot that does what servers usually need five for. Live in a private server
-                    now, going public once it&apos;s polished.
+                    One bot that does what servers usually need five for. Public now — invite it
+                    to any server you manage.
                   </p>
                 </div>
                 <div className="tech-chips">
@@ -156,6 +156,11 @@ export default function Portfolio() {
                   <span className="tech-chip">Supabase</span>
                   <span className="tech-chip">node-canvas</span>
                   <span className="tech-chip">PM2 · Oracle Cloud</span>
+                </div>
+                <div className="spot-links">
+                  <a className="btn btn-fill btn-sm" href="https://jugaadbot.vercel.app/" target="_blank" rel="noopener">
+                    Website ↗
+                  </a>
                 </div>
                 <p className="spot-private">Repo is private for now while it&apos;s in development.</p>
               </SpotlightCard>
