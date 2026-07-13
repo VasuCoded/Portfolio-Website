@@ -3,6 +3,7 @@ import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/AppShell";
 import PageTransition from "@/components/PageTransition";
+import AmbientBackground from "@/components/AmbientBackground";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -39,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <body>
+        <AmbientBackground />
         <AppShell>
           <PageTransition>{children}</PageTransition>
         </AppShell>

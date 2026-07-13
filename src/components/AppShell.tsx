@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import StatusTicker from "@/components/StatusTicker";
+import MemberList from "@/components/MemberList";
 
 const CATEGORIES = [
   {
@@ -23,7 +25,10 @@ function ChannelList({ pathname, onNavigate }: { pathname: string; onNavigate?: 
     <div className="sidebar-scroll">
       {CATEGORIES.map((cat) => (
         <div key={cat.label}>
-          <div className="sidebar-category">{cat.label}</div>
+          <div className="sidebar-category">
+            <span className="cat-caret">▾</span>
+            {cat.label}
+          </div>
           {cat.channels.map((c) => {
             const active = pathname === c.href;
             return (
@@ -41,6 +46,17 @@ function ChannelList({ pathname, onNavigate }: { pathname: string; onNavigate?: 
           })}
         </div>
       ))}
+
+      {/* voice channel — flavor, not a real link */}
+      <div className="sidebar-category">
+        <span className="cat-caret">▾</span>
+        voice
+      </div>
+      <div className="side-channel voice" title="nobody's in here (it's a portfolio)">
+        <span className="hash speaker">🔊</span>
+        the-void
+        <span className="voice-count">0</span>
+      </div>
     </div>
   );
 }
@@ -48,10 +64,30 @@ function ChannelList({ pathname, onNavigate }: { pathname: string; onNavigate?: 
 function SidebarHeader() {
   return (
     <div className="sidebar-header">
-      <div>
-        <h1>vasu&apos;s server</h1>
-        <p className="status-line">● 1 member online</p>
+      <div className="sidebar-banner" aria-hidden />
+      <div className="sidebar-header-row">
+        <div>
+          <h1>vasu&apos;s server</h1>
+          <p className="status-line">● 1 member online · always</p>
+        </div>
       </div>
+      <div className="boost-bar" title="0 boosts. it's fine. it's fine.">
+        <span className="boost-badge">◈ Lvl 0</span>
+        <span className="boost-track">
+          <span className="boost-fill" />
+        </span>
+        <span className="boost-note">2 to go</span>
+      </div>
+    </div>
+  );
+}
+
+function Sidebar({ pathname, onNavigate }: { pathname: string; onNavigate?: () => void }) {
+  return (
+    <div className="channel-sidebar">
+      <SidebarHeader />
+      <ChannelList pathname={pathname} onNavigate={onNavigate} />
+      <StatusTicker />
     </div>
   );
 }
@@ -69,10 +105,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="app-shell">
-      <div className="channel-sidebar">
-        <SidebarHeader />
-        <ChannelList pathname={pathname} />
-      </div>
+      <Sidebar pathname={pathname} />
 
       <div
         className={`drawer-backdrop${drawerOpen ? " open" : ""}`}
@@ -80,10 +113,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         aria-hidden={!drawerOpen}
       />
       <div className={`drawer-panel${drawerOpen ? " open" : ""}`} aria-hidden={!drawerOpen}>
-        <div className="channel-sidebar">
-          <SidebarHeader />
-          <ChannelList pathname={pathname} onNavigate={() => setDrawerOpen(false)} />
-        </div>
+        <Sidebar pathname={pathname} onNavigate={() => setDrawerOpen(false)} />
       </div>
 
       <div className="main-column">
@@ -97,6 +127,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
         <div className="content-col">{children}</div>
       </div>
+
+      <MemberList />
     </div>
   );
 }
