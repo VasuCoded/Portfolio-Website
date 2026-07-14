@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import ChannelHeader from "@/components/ChannelHeader";
@@ -263,19 +264,35 @@ export default function About() {
                   rel="noopener"
                   style={{ ["--accent" as string]: ch.accent } as React.CSSProperties}
                 >
-                  <div className="channel-badge">
+                  <span className="channel-watermark" aria-hidden>
                     <ChannelIcon niche={ch.niche} />
+                  </span>
+                  <div className="channel-badge-logo">
+                    <Image src={ch.logo} alt={`${ch.name} logo`} width={46} height={46} loading="eager" />
+                    <span className="channel-play" aria-hidden>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7L8 5z" />
+                      </svg>
+                    </span>
                   </div>
                   <div className="channel-body">
                     <div className="channel-top">
                       <h4>{ch.name}</h4>
-                      <span className="channel-niche-tag">{ch.topic}</span>
+                      <span className="channel-go" aria-hidden>
+                        ↗
+                      </span>
                     </div>
                     <p>{ch.blurb}</p>
+                    <div className="channel-foot">
+                      <span className="channel-niche-tag">
+                        <ChannelIcon niche={ch.niche} />
+                        {ch.topic}
+                      </span>
+                      <span className="channel-sub">
+                        <span className="channel-sub-bell">🔔</span> subscribed
+                      </span>
+                    </div>
                   </div>
-                  <span className="channel-go" aria-hidden>
-                    ↗
-                  </span>
                 </a>
               </Reveal>
             ))}

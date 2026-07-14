@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
@@ -135,6 +136,45 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.08}>
               <Whiteboard />
+            </Reveal>
+          </div>
+        </div>
+
+        {/* more channels — the "visit these too" nudge */}
+        <div className="section-gap">
+          <Reveal>
+            <div className="msg-divider">
+              <span>🧭 more channels</span>
+            </div>
+          </Reveal>
+          <div className="nav-card-grid">
+            <Reveal delay={0.04}>
+              <Link href="/about" className="nav-card">
+                <span className="nav-card-hash">#</span>
+                <span className="nav-card-body">
+                  <span className="nav-card-title">about-me</span>
+                  <span className="nav-card-sub">
+                    who I am + everything I yap about — music, SCP lore, YouTube rabbit holes
+                  </span>
+                </span>
+                <span className="nav-card-go" aria-hidden>
+                  →
+                </span>
+              </Link>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Link href="/portfolio" className="nav-card">
+                <span className="nav-card-hash">#</span>
+                <span className="nav-card-body">
+                  <span className="nav-card-title">portfolio</span>
+                  <span className="nav-card-sub">
+                    the stuff I&apos;ve actually built, plus what&apos;s still just an idea
+                  </span>
+                </span>
+                <span className="nav-card-go" aria-hidden>
+                  →
+                </span>
+              </Link>
             </Reveal>
           </div>
         </div>

@@ -22,7 +22,7 @@ export default function MemberList() {
 
       <div className="member owner">
         <div className="member-av">
-          <Image src="/avatar.png" alt="" width={32} height={32} />
+          <Image src="/avatar.png" alt="" width={32} height={32} loading="eager" />
           <span className="member-presence online" />
         </div>
         <div className="member-meta">
