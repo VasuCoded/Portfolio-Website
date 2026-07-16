@@ -13,7 +13,7 @@ import TypingDots from "@/components/TypingDots";
 
 const ROLES = [
   { label: "systems", color: "#5b6f4d" },
-  { label: "discord infra", color: "#5a5891" },
+  { label: "discord infra", color: "#4e6a80" },
   { label: "ops", color: "#a1533f" },
   { label: "founder", color: "#a67c27" },
 ];
