@@ -9,6 +9,7 @@ import ChannelHeader from "@/components/ChannelHeader";
 import Whiteboard from "@/components/Whiteboard";
 import Reactions from "@/components/Reactions";
 import Redacted from "@/components/Redacted";
+import ChatGroup from "@/components/ChatGroup";
 import TypingDots from "@/components/TypingDots";
 
 const ROLES = [
@@ -78,12 +79,13 @@ export default function Home() {
 
               <div className="profile-right">
                 <div className="profile-note">
-                  <span className="profile-note-k">about me</span>
+                  <span className="profile-note-k">📌 pinned · server info</span>
                   <p>
-                    Systems and Discord infra, an SCP habit, and a{" "}
-                    <Redacted>BoyWithUke</Redacted>
-                    {" "}problem. This is my corner of the internet, run like the server I&apos;d
-                    actually want to hang out in.
+                    Two channels live here right now — <strong>#yapping</strong>
+                    {" "}for music, SCP lore and whatever else I&apos;m deep in, and{" "}
+                    <strong>#portfolio</strong>
+                    {" "}for the stuff I&apos;ve actually built. Rail&apos;s on the left,
+                    roster&apos;s on the right. Still under construction in a couple spots.
                   </p>
                 </div>
 
@@ -106,31 +108,44 @@ export default function Home() {
           </div>
         </Reveal>
 
-        {/* pinned message */}
+        {/* about me — the actual intro */}
         <div className="section-gap">
           <Reveal>
             <div className="msg-divider">
-              <span>📌 pinned</span>
+              <span>👋 about me</span>
             </div>
-            <div className="idea-row" style={{ borderStyle: "solid", background: "var(--paper)" }}>
-              <span className="idea-tag">pinned</span>
-              <div>
-                <p style={{ margin: 0 }}>
-                  Server created 2026 · boost level 0 · vibe: still under construction in a couple
-                  spots. Two channels live here right now — <strong>#about-me</strong>{" "}
-                  for the actual person plus what I yap about (music, SCP lore), and{" "}
-                  <strong>#portfolio</strong>{" "}
-                  for the stuff I&apos;ve built. Rail&apos;s on the left, roster&apos;s on the right.
-                </p>
-                <Reactions
-                  initial={[
-                    { emoji: "🔥", count: 7 },
-                    { emoji: "👀", count: 12 },
-                    { emoji: "🫡", count: 4 },
-                  ]}
-                />
-              </div>
-            </div>
+          </Reveal>
+          <Reveal delay={0.04}>
+            <ChatGroup time="pinned intro">
+              <p className="chat-line">
+                I lean product and systems over pure development. Give me a problem and I&apos;d
+                rather work out how the whole thing should run and drive the process to ship it,
+                then write the specific code that&apos;s actually missing.
+              </p>
+              <p className="chat-line">
+                Discord is where this shows up most — bots, permissions, moderation, anti-raid
+                setup. A lot of what I build, on Discord and off it, comes down to the same
+                instinct: find the resourceful way to make something work with whatever&apos;s on
+                hand, then clean it up once it does. If you know the word <em>jugaad</em>,
+                that&apos;s pretty much my whole approach in one word.
+              </p>
+              <p className="chat-line">
+                Right now I&apos;m on a drop year, prepping for JEE Advanced and UGEE 2027. Longer
+                term I&apos;m working toward <strong>AI systems for autonomous surveillance and
+                drone platforms</strong>
+                {" "}— the tools and ops work here are groundwork for that, even on the days it
+                doesn&apos;t look like it. Off the clock it&apos;s an SCP habit and a{" "}
+                <Redacted>BoyWithUke</Redacted>
+                {" "}problem; both live over in <Link href="/yapping" className="td-link">#yapping</Link>.
+              </p>
+              <Reactions
+                initial={[
+                  { emoji: "🔥", count: 7 },
+                  { emoji: "👀", count: 12 },
+                  { emoji: "🫡", count: 4 },
+                ]}
+              />
+            </ChatGroup>
           </Reveal>
         </div>
 
@@ -173,12 +188,12 @@ export default function Home() {
           </Reveal>
           <div className="nav-card-grid">
             <Reveal delay={0.04}>
-              <Link href="/about" className="nav-card">
+              <Link href="/yapping" className="nav-card">
                 <span className="nav-card-hash">#</span>
                 <span className="nav-card-body">
-                  <span className="nav-card-title">about-me</span>
+                  <span className="nav-card-title">yapping</span>
                   <span className="nav-card-sub">
-                    who I am + everything I yap about — music, SCP lore, YouTube rabbit holes
+                    music, SCP lore, YouTube rabbit holes, and the TouchDesigner obsession
                   </span>
                 </span>
                 <span className="nav-card-go" aria-hidden>

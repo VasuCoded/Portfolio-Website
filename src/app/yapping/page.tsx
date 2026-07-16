@@ -5,7 +5,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import ChannelHeader from "@/components/ChannelHeader";
-import ExpandableCard from "@/components/ExpandableCard";
+import PlaylistCard from "@/components/PlaylistCard";
 import RandomSongPick from "@/components/RandomSongPick";
 import RandomChannelPick from "@/components/RandomChannelPick";
 import NowSpinning from "@/components/NowSpinning";
@@ -31,41 +31,16 @@ const ON_REPEAT_SAMPLE = [
   "There Is a Light That Never Goes Out — The Smiths",
 ];
 
-function DiscIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
-      <circle cx="12" cy="12" r="2.4" fill="currentColor" />
-      <path d="M12 3a9 9 0 0 1 8.5 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity="0.6" />
-    </svg>
-  );
-}
-
-export default function About() {
+export default function Yapping() {
   return (
     <>
-      <ChannelHeader name="about-me" topic="who I am, and what I won't shut up about" />
+      <ChannelHeader name="yapping" topic="the stuff I won't shut up about" />
       <div className="content-inner">
         <Reveal>
-          <ChatGroup time="pinned intro">
+          <ChatGroup time="read the room">
             <p className="chat-line">
-              I lean product and systems over pure development. Give me a problem and I&apos;d
-              rather work out how the whole thing should run and drive the process to ship it,
-              then write the specific code that&apos;s actually missing.
-            </p>
-            <p className="chat-line">
-              Discord is where this shows up most — bots, permissions, moderation, anti-raid
-              setup. A lot of what I build, on Discord and off it, comes down to the same
-              instinct: find the resourceful way to make something work with whatever&apos;s on
-              hand, then clean it up once it does. If you know the word <em>jugaad</em>,
-              that&apos;s pretty much my whole approach in one word.
-            </p>
-            <p className="chat-line">
-              Right now I&apos;m on a drop year, prepping for JEE Advanced and UGEE 2027. Longer
-              term I&apos;m working toward <strong>AI systems for autonomous surveillance and
-              drone platforms</strong>
-              {" "}— the tools and ops work here are groundwork for that, even on the days it
-              doesn&apos;t look like it.
+              Four things I&apos;ll talk your ear off about, unprompted, given the smallest
+              opening. If any of it lands, my DMs are the fastest way to start something.
             </p>
             <Reactions
               initial={[
@@ -114,48 +89,36 @@ export default function About() {
 
           <div className="card-grid" style={{ marginTop: 12 }}>
             <Reveal delay={0.08}>
-              <ExpandableCard
+              <PlaylistCard
                 title="The Admin Archives"
                 summary="a Blend with two close friends"
-                meta={
-                  <span className="playlist-pill">
-                    <DiscIcon />
-                    50 · 3h43
-                  </span>
-                }
+                kind="blend"
+                count="50"
+                duration="3h 43m"
+                accent="#9A4A38"
+                tracks={ADMIN_ARCHIVES_SAMPLE}
               >
                 <p>
                   Spotify Blend where our three very different tastes collide — indie and alt-rock
                   running straight into Bollywood soundtracks, no genre-whiplash warnings.
                 </p>
-                <ul className="track-list">
-                  {ADMIN_ARCHIVES_SAMPLE.map((t) => (
-                    <li key={t}>{t}</li>
-                  ))}
-                </ul>
-              </ExpandableCard>
+              </PlaylistCard>
             </Reveal>
             <Reveal delay={0.12}>
-              <ExpandableCard
+              <PlaylistCard
                 title="On Repeat"
                 summary="Spotify's own read on right now"
-                meta={
-                  <span className="playlist-pill">
-                    <DiscIcon />
-                    30 · 2h35
-                  </span>
-                }
+                kind="auto-made"
+                count="30"
+                duration="2h 35m"
+                accent="#3B6E8F"
+                tracks={ON_REPEAT_SAMPLE}
               >
                 <p>
                   Currently leaning hard into Bollywood and film scores, which wasn&apos;t true a
                   month ago and probably won&apos;t be true a month from now.
                 </p>
-                <ul className="track-list">
-                  {ON_REPEAT_SAMPLE.map((t) => (
-                    <li key={t}>{t}</li>
-                  ))}
-                </ul>
-              </ExpandableCard>
+              </PlaylistCard>
             </Reveal>
           </div>
 

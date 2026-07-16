@@ -10,14 +10,14 @@ import BottomNav from "@/components/BottomNav";
 const CATEGORIES = [
   {
     label: "info",
-    channels: [
-      { href: "/", label: "welcome" },
-      { href: "/about", label: "about-me" },
-    ],
+    channels: [{ href: "/", label: "welcome" }],
   },
   {
     label: "showcase",
-    channels: [{ href: "/portfolio", label: "portfolio" }],
+    channels: [
+      { href: "/yapping", label: "yapping" },
+      { href: "/portfolio", label: "portfolio" },
+    ],
   },
 ];
 

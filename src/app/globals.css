@@ -979,6 +979,79 @@ a:focus-visible, button:focus-visible {
 .player-play:hover { background: #7ba363; color: var(--side-bg); }
 .player-note { font-size: 13.5px; color: var(--side-text-muted); margin-top: 14px; line-height: 1.55; }
 
+/* ---------- Playlist cards ----------
+   Same language as the YouTube channel cards: accent stripe, cover tile with
+   a play overlay, faded watermark, meta pills. */
+.pl-card {
+  position: relative; overflow: hidden;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  border-left: 4px solid var(--accent, var(--clay));
+  box-shadow: var(--shadow-panel);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.pl-card:hover, .pl-card.open {
+  border-color: var(--accent, var(--clay));
+  box-shadow: 0 4px 8px rgba(32,31,26,0.06), 0 16px 32px -18px rgba(32,31,26,0.3);
+}
+.pl-card:hover { transform: translateY(-3px); }
+.pl-watermark {
+  position: absolute; right: -8px; bottom: -12px; color: var(--accent, var(--clay));
+  opacity: 0.07; transform: scale(3.6) rotate(-6deg); transform-origin: bottom right;
+  transition: opacity .2s ease, transform .2s ease; pointer-events: none;
+}
+.pl-card:hover .pl-watermark { opacity: 0.12; transform: scale(3.9) rotate(-2deg); }
+
+.pl-head {
+  position: relative; z-index: 1; width: 100%; text-align: left;
+  display: flex; gap: 13px; align-items: flex-start; padding: 15px 16px 14px 18px;
+}
+/* stacked-disc cover: a record peeking out from behind the sleeve */
+.pl-cover { position: relative; width: 48px; height: 48px; flex-shrink: 0; display: block; }
+.pl-disc {
+  position: absolute; top: 3px; right: -5px; width: 42px; height: 42px; border-radius: 50%;
+  background: repeating-radial-gradient(circle at center, #16170f 0 1px, #23241d 1px 3px);
+  box-shadow: 0 2px 6px -2px rgba(0,0,0,0.5);
+  transition: transform .25s ease;
+}
+.pl-card:hover .pl-disc { transform: translateX(5px) rotate(22deg); }
+.pl-cover-face {
+  position: absolute; inset: 0; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--accent, var(--clay)) 85%, #000 5%),
+    color-mix(in srgb, var(--accent, var(--clay)) 45%, #1b1d16));
+  box-shadow: 0 0 0 1px rgba(32,31,26,0.18), inset 0 1px 0 rgba(255,255,255,0.22);
+}
+.pl-cover-face .eq-bars span { background: rgba(255,255,255,0.85); }
+.pl-play {
+  position: absolute; inset: 0; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(18,17,12,0.6); color: #fff; opacity: 0; transition: opacity .2s ease;
+}
+.pl-card:hover .pl-play { opacity: 1; }
+
+.pl-body { flex: 1; min-width: 0; display: block; }
+.pl-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pl-title { font-size: 14.5px; font-weight: 700; color: var(--ink); }
+.pl-summary { display: block; font-size: 12.5px; color: var(--ink-muted); margin-top: 3px; }
+.pl-meta { display: flex; align-items: center; gap: 6px; margin-top: 9px; flex-wrap: wrap; }
+.pl-kind {
+  font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--accent, var(--clay-text));
+  border: 1px solid color-mix(in srgb, var(--accent, var(--clay)) 40%, transparent);
+  padding: 2.5px 8px; border-radius: 999px;
+}
+.pl-stat {
+  font-family: var(--mono); font-size: 9.5px; color: var(--ink-muted);
+  background: var(--bone); border: 1px solid var(--line); padding: 2.5px 8px; border-radius: 999px;
+}
+.pl-open { position: relative; z-index: 1; padding: 0 18px 16px; }
+.pl-open p { font-size: 13.5px; color: var(--ink-soft); }
+.track-list .track-n {
+  font-family: var(--mono); font-size: 9.5px; color: var(--accent, var(--moss));
+  margin-right: 8px; opacity: 0.8;
+}
+
 /* ---------- Shuffle / playlist bits ---------- */
 /* styled like a torn jukebox ticket: notched edges + a big shuffle watermark */
 .shuffle-card {
@@ -1003,15 +1076,16 @@ a:focus-visible, button:focus-visible {
   background: var(--bone); border: 1px solid var(--line); padding: 3px 9px; border-radius: 999px;
   flex-shrink: 0;
 }
-.track-list { margin-top: 10px; padding-left: 0; list-style: none; }
+/* numbered like a real tracklist (the .track-n span does the numbering) */
+.track-list { margin-top: 12px; padding-left: 0; list-style: none; }
 .track-list li {
-  font-size: 13px; color: var(--ink-muted); padding: 5px 0 5px 20px; position: relative;
+  font-size: 13px; color: var(--ink-muted); padding: 6px 0;
   border-bottom: 1px solid var(--line-soft);
+  display: flex; align-items: baseline;
+  transition: color .12s ease;
 }
 .track-list li:last-child { border-bottom: none; }
-.track-list li::before {
-  content: "♪"; position: absolute; left: 2px; color: var(--moss); font-size: 11px; top: 6px;
-}
+.track-list li:hover { color: var(--ink-soft); }
 
 /* ---------- Portfolio intro ---------- */
 .portfolio-intro { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
