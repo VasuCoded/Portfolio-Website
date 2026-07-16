@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import ChannelHeader from "@/components/ChannelHeader";
 import SpotlightCard from "@/components/SpotlightCard";
-import { WhatNowIcon, CollabIcon, JugaadIcon, TouchDesignerIcon } from "@/components/ProjectIcons";
+import { CollabIcon } from "@/components/ProjectIcons";
 
 export default function Portfolio() {
   return (
@@ -42,7 +42,7 @@ export default function Portfolio() {
           <div className="spotlight-grid">
             <Reveal delay={0.04}>
               <SpotlightCard
-                icon={<WhatNowIcon />}
+                logo="/projects/whatnow.png"
                 accent="var(--moss)"
                 title="WhatNow"
                 tagline="A content platform for exam & career guidance — a Next.js site backed by a multi-channel content pipeline."
@@ -124,7 +124,7 @@ export default function Portfolio() {
 
             <Reveal delay={0.12}>
               <SpotlightCard
-                icon={<JugaadIcon />}
+                logo="/projects/jugaad.png"
                 accent="#7A5B1C"
                 title="Jugaad"
                 tagline="A multi-feature Discord bot — economy, moderation, mini-games, and on-the-fly image generation, self-hosted."
@@ -168,11 +168,11 @@ export default function Portfolio() {
 
             <Reveal delay={0.16}>
               <SpotlightCard
-                icon={<TouchDesignerIcon />}
-                accent="#3B6E8F"
+                logo="/projects/touchdesigner.png"
+                accent="#6B8F55"
                 title="Hand-Tracked Reveal"
-                tagline="A real-time TouchDesigner effect: the space between your fingers becomes a window that either reveals a bright shape, or makes you vanish into the empty room behind you."
-                meta={<span className="meta-tag">built · 2 variants</span>}
+                tagline="A real-time TouchDesigner effect — frame a shape with your fingers and it becomes a window that reveals, or makes you vanish."
+                meta={<span className="meta-tag">built</span>}
               >
                 <div className="spot-field">
                   <span className="spot-k">My role</span>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 import {
   AnimatePresence,
@@ -12,13 +13,16 @@ import {
 
 export default function SpotlightCard({
   icon,
+  logo,
   accent = "var(--moss)",
   title,
   tagline,
   meta,
   children,
 }: {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
+  /** real project logo — takes precedence over the fallback svg `icon` */
+  logo?: string;
   accent?: string;
   title: string;
   tagline: string;
@@ -58,23 +62,33 @@ export default function SpotlightCard({
     >
       <motion.div className="spot-glow" style={{ background: glow }} aria-hidden />
       <button className="spot-card-head" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
-        <div className="spot-icon" style={{ background: accent }}>
-          {icon}
-        </div>
+        {logo ? (
+          <div className="spot-icon spot-icon-img" style={{ ["--accent" as string]: accent } as React.CSSProperties}>
+            <Image src={logo} alt="" width={44} height={44} loading="eager" />
+          </div>
+        ) : (
+          <div className="spot-icon" style={{ background: accent }}>
+            {icon}
+          </div>
+        )}
+        {/* meta + chevron live in the title row so the tagline can span the
+            full width underneath instead of wrapping into a narrow column */}
         <div className="spot-head-text">
-          <div className="spot-title">{title}</div>
+          <div className="spot-title-row">
+            <div className="spot-title">{title}</div>
+            {meta}
+            <motion.span
+              className="xcard-chevron"
+              animate={{ rotate: open ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </motion.span>
+          </div>
           <div className="spot-tagline">{tagline}</div>
         </div>
-        {meta}
-        <motion.span
-          className="xcard-chevron"
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.span>
       </button>
       <AnimatePresence initial={false}>
         {open && (

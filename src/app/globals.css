@@ -705,8 +705,18 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 4px 10px -4px rgba(32,31,26,0.4);
 }
 .spot-head-text { flex: 1; min-width: 0; }
-.spot-title { font-size: 16px; font-weight: 700; color: var(--ink); }
-.spot-tagline { font-size: 13px; color: var(--ink-soft); margin-top: 5px; line-height: 1.45; }
+/* title, status pill and chevron share one row; the tagline gets the full
+   width below them rather than being squeezed beside the pill */
+.spot-title-row { display: flex; align-items: center; gap: 8px; }
+.spot-title { font-size: 16px; font-weight: 700; color: var(--ink); flex: 1; min-width: 0; }
+.spot-tagline { font-size: 13px; color: var(--ink-soft); margin-top: 6px; line-height: 1.5; }
+
+/* real project logo tile */
+.spot-icon-img {
+  background: var(--bone); padding: 0; overflow: hidden;
+  box-shadow: 0 0 0 1px var(--line), 0 4px 10px -4px rgba(32,31,26,0.35);
+}
+.spot-icon-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
 
 .spot-field { margin-top: 12px; }
 .spot-field:first-child { margin-top: 0; }
