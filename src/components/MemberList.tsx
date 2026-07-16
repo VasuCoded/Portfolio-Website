@@ -52,7 +52,9 @@ export default function MemberList() {
         rel="noopener"
       >
         <div className="member-av">
-          <div className="member-bot-icon">J</div>
+          <div className="member-bot-icon">
+            <Image src="/projects/jugaad.png" alt="" width={32} height={32} loading="eager" />
+          </div>
           <span className="member-presence online" />
         </div>
         <div className="member-meta">

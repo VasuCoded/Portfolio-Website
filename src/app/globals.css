@@ -294,7 +294,8 @@ a:focus-visible, button:focus-visible {
   display: flex; align-items: center; justify-content: center;
   font-weight: 700; font-size: 14px;
 }
-.member-bot-icon { background: linear-gradient(135deg, #9a4a38, #7a5b1c); color: var(--bone); }
+.member-bot-icon { background: var(--side-bg-deep); overflow: hidden; }
+.member-bot-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .member-ghost { background: rgba(241,238,229,0.08); color: var(--side-text-muted); font-size: 15px; }
 .member-presence {
   position: absolute; bottom: -1px; right: -1px; width: 11px; height: 11px; border-radius: 50%;
@@ -562,6 +563,85 @@ a:focus-visible, button:focus-visible {
   color: var(--ink-muted);
 }
 .mini-v { font-size: 14px; font-weight: 700; color: var(--moss-text); }
+
+/* ---------- TouchDesigner interest ----------
+   Dark like a node editor, and the little graph uses TD's own wire colours
+   (blue TOP / green CHOP / magenta SOP) — the detail TD people will clock. */
+.td-card {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(110% 130% at 92% 0%, rgba(240,166,60,0.12), transparent 55%),
+    var(--side-bg);
+  color: var(--side-text);
+  border: 1px solid rgba(241,238,229,0.08);
+  border-radius: 16px; padding: 20px; box-shadow: var(--shadow-panel);
+}
+/* faint node-editor grid */
+.td-card::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(241,238,229,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(241,238,229,0.045) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent 70%);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent 70%);
+}
+.td-head { position: relative; z-index: 1; display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
+.td-logo {
+  width: 44px; height: 44px; border-radius: 11px; overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(241,238,229,0.14);
+}
+.td-logo img { width: 100%; height: 100%; object-fit: cover; }
+.td-head h4 { font-size: 15px; font-weight: 700; color: var(--side-text); }
+.td-sub { font-family: var(--mono); font-size: 10.5px; color: #f0a63c; margin-top: 3px; }
+.td-text { position: relative; z-index: 1; font-size: 14px; color: var(--side-text-muted); margin-top: 12px; line-height: 1.6; }
+.td-text em { color: var(--side-text); font-style: italic; }
+.td-link { color: var(--moss-bright); text-decoration: underline; text-underline-offset: 3px; }
+
+/* the node graph strip */
+.td-graph {
+  position: relative; z-index: 1; margin-top: 16px; padding: 14px;
+  background: rgba(10,11,8,0.5); border: 1px solid rgba(241,238,229,0.09); border-radius: 10px;
+}
+.td-graph-k {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--side-text-faint); display: block; margin-bottom: 10px;
+}
+.td-nodes { display: flex; align-items: center; gap: 0; flex-wrap: wrap; row-gap: 8px; }
+.td-node {
+  font-family: var(--mono); font-size: 11px; color: var(--side-text);
+  background: #242a36; border: 1px solid #3a4252; border-radius: 6px; padding: 5px 10px;
+  white-space: nowrap;
+}
+.td-wire { flex: 1; min-width: 16px; height: 2px; border-radius: 2px; }
+.w-top { background: #6ea8ff; }
+.w-chop { background: #7bd88f; }
+.w-sop { background: #d98adf; }
+.td-legend {
+  display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px;
+  font-family: var(--mono); font-size: 9.5px; color: var(--side-text-faint);
+}
+.td-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.td-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+/* the reach-out block */
+.td-cta {
+  position: relative; z-index: 1; margin-top: 16px; padding: 14px 16px;
+  border: 1px dashed rgba(107,143,85,0.5); border-radius: 10px;
+  background: rgba(107,143,85,0.08);
+}
+.td-cta-k {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--moss-bright); display: block; margin-bottom: 6px;
+}
+.td-cta p { font-size: 13.5px; color: var(--side-text-muted); line-height: 1.6; }
+.td-cta p strong { color: var(--side-text); font-weight: 700; }
+.td-cta-handle {
+  display: inline-block; margin-top: 10px;
+  font-family: var(--mono); font-size: 11px; color: var(--moss-bright);
+  background: rgba(107,143,85,0.14); border: 1px solid rgba(107,143,85,0.35);
+  border-radius: 999px; padding: 4px 11px;
+}
 
 /* ---------- Chat message group (Discord-style prose) ---------- */
 .chat-group {

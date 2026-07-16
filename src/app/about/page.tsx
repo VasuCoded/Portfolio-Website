@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import ChannelHeader from "@/components/ChannelHeader";
@@ -323,18 +324,83 @@ export default function About() {
           </Reveal>
         </div>
 
-        {/* ---------------- PLACEHOLDER ---------------- */}
+        {/* ---------------- TOUCHDESIGNER ---------------- */}
         <div className="section-gap">
           <Reveal>
             <div className="block-head">
-              <div className="block-tag">04 · reserved</div>
-              <p className="block-topic">still loading</p>
+              <div className="block-tag">04 · touchdesigner</div>
+              <p className="block-topic">the newest rabbit hole</p>
             </div>
           </Reveal>
+
           <Reveal delay={0.04}>
-            <div className="idea-row">
-              <span className="idea-tag">soon</span>
-              <p>Interest slot #4 — not written up yet, more coming.</p>
+            <div className="td-card">
+              <div className="td-head">
+                <div className="td-logo">
+                  <Image src="/projects/touchdesigner.png" alt="TouchDesigner" width={44} height={44} loading="eager" />
+                </div>
+                <div>
+                  <h4>node graphs, wires, and everything running live</h4>
+                  <p className="td-sub">picked it up recently · still very much a beginner</p>
+                </div>
+              </div>
+
+              <p className="td-text">
+                I fell into TouchDesigner recently and it&apos;s the most fun I&apos;ve had
+                building something in a while. It&apos;s node-based — you wire operators
+                together and the whole graph <em>cooks</em> live, 60 times a second. No build
+                step, no refresh. You drag a wire and the output changes while you&apos;re
+                looking at it, which makes it dangerously easy to lose three hours.
+              </p>
+
+              <div className="td-graph" aria-hidden>
+                <span className="td-graph-k">the loop</span>
+                <div className="td-nodes">
+                  <span className="td-node">webcam</span>
+                  <span className="td-wire w-top" />
+                  <span className="td-node">mediapipe</span>
+                  <span className="td-wire w-chop" />
+                  <span className="td-node">script</span>
+                  <span className="td-wire w-sop" />
+                  <span className="td-node">render</span>
+                </div>
+                <div className="td-legend">
+                  <span>
+                    <i className="w-top" />
+                    TOP · image
+                  </span>
+                  <span>
+                    <i className="w-chop" />
+                    CHOP · data
+                  </span>
+                  <span>
+                    <i className="w-sop" />
+                    SOP · geometry
+                  </span>
+                </div>
+              </div>
+
+              <p className="td-text">
+                First real thing I built with it: a window you frame with your fingers that
+                either reveals a bright shape or makes you vanish into a frozen photo of the
+                empty room behind you. The technical writeup lives over in{" "}
+                <Link href="/portfolio" className="td-link">
+                  #portfolio
+                </Link>
+                .
+              </p>
+
+              <div className="td-cta">
+                <span className="td-cta-k">◈ open invitation</span>
+                <p>
+                  I&apos;m nowhere near good at this yet, so this goes both ways. If you
+                  actually know TouchDesigner — <strong>teach me something</strong>, I&apos;ll
+                  take any tip going. If you&apos;re just starting out, I&apos;ll happily walk
+                  you through everything I&apos;ve figured out so far. And if you only want to
+                  yap about node graphs, that counts too.
+                </p>
+                <span className="td-cta-handle">reach out — @_whois.vasu on Discord</span>
+              </div>
             </div>
           </Reveal>
         </div>
