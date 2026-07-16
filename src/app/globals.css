@@ -89,18 +89,27 @@ a:focus-visible, button:focus-visible {
 .sidebar-header {
   position: relative; border-bottom: 1px solid var(--side-border);
 }
+/* A defined strip with its own dot grid and a hard bottom edge, so it reads as
+   a deliberate server banner instead of a stray gradient smudge. */
 .sidebar-banner {
-  height: 54px;
+  height: 58px; position: relative; overflow: hidden;
+  border-bottom: 1px solid rgba(241,238,229,0.10);
   background:
-    radial-gradient(90% 160% at 15% 130%, rgba(122,164,96,0.5), transparent 62%),
-    radial-gradient(80% 150% at 85% 140%, rgba(178,84,60,0.38), transparent 62%),
-    linear-gradient(180deg, #22251c, #191b14);
-  position: relative;
+    radial-gradient(85% 150% at 12% 120%, rgba(122,164,96,0.55), transparent 60%),
+    radial-gradient(80% 150% at 88% 130%, rgba(178,84,60,0.42), transparent 60%),
+    linear-gradient(180deg, #262a1e, #14160f);
+}
+.sidebar-banner::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(241,238,229,0.16) 1px, transparent 0);
+  background-size: 13px 13px;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.85), transparent 90%);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.85), transparent 90%);
 }
 .sidebar-banner::after {
   content: ""; position: absolute; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.08;
+  opacity: 0.09;
 }
 .sidebar-header-row { padding: 12px 16px 0; }
 .sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--side-text); }
@@ -554,6 +563,28 @@ a:focus-visible, button:focus-visible {
 }
 .mini-v { font-size: 14px; font-weight: 700; color: var(--moss-text); }
 
+/* ---------- Chat message group (Discord-style prose) ---------- */
+.chat-group {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  border-left: 3px solid var(--moss);
+  padding: 16px 18px; box-shadow: var(--shadow-panel);
+}
+.chat-av { width: 40px; height: 40px; flex-shrink: 0; }
+.chat-av img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
+.chat-body { flex: 1; min-width: 0; }
+.chat-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+.chat-name { font-size: 14.5px; font-weight: 700; color: #7a5f1f; }
+.chat-badge {
+  font-family: var(--mono); font-size: 8.5px; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; background: var(--moss); color: var(--bone);
+  padding: 1.5px 5px; border-radius: 3px;
+}
+.chat-time { font-family: var(--mono); font-size: 10.5px; color: var(--ink-muted); }
+.chat-line { font-size: 15px; color: var(--ink-soft); margin-top: 8px; }
+.chat-line:first-of-type { margin-top: 0; }
+.chat-line strong { font-weight: 700; color: var(--ink); }
+
 /* ---------- Reactions ---------- */
 .reactions { display: flex; align-items: center; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
 .react-pill {
@@ -757,26 +788,78 @@ a:focus-visible, button:focus-visible {
 
 /* ---------- Music player (now spinning) ---------- */
 .player-card {
-  background: var(--side-bg); color: var(--side-text); border-radius: 16px;
-  padding: 18px; box-shadow: var(--shadow-panel);
-}
-.player-top { display: flex; gap: 16px; align-items: center; }
-.vinyl {
-  width: 84px; height: 84px; border-radius: 50%; flex-shrink: 0; position: relative;
+  position: relative; overflow: hidden;
   background:
-    repeating-radial-gradient(circle at center, #1a1b17 0 2px, #23241d 2px 4px);
-  box-shadow: inset 0 0 0 1px rgba(241,238,229,0.08), 0 6px 14px -6px rgba(0,0,0,0.6);
+    radial-gradient(120% 130% at 88% 0%, rgba(107,143,85,0.16), transparent 55%),
+    var(--side-bg);
+  color: var(--side-text); border-radius: 16px;
+  padding: 18px; box-shadow: var(--shadow-panel);
+  border: 1px solid rgba(241,238,229,0.07);
+}
+.player-side {
+  position: absolute; top: 14px; right: 16px;
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(241,238,229,0.28); border: 1px solid rgba(241,238,229,0.12);
+  border-radius: 999px; padding: 2px 8px;
+}
+.player-top { display: flex; gap: 18px; align-items: center; }
+
+/* record + tonearm */
+.vinyl-wrap { position: relative; width: 92px; height: 92px; flex-shrink: 0; }
+.vinyl {
+  width: 92px; height: 92px; border-radius: 50%; position: relative; overflow: hidden;
+  background:
+    repeating-radial-gradient(circle at center, #121309 0 1px, #1e2018 1px 3px);
+  box-shadow: inset 0 0 0 1px rgba(241,238,229,0.10), 0 8px 18px -8px rgba(0,0,0,0.75);
   animation: spin 8s linear infinite;
 }
+/* light sweeping across the grooves */
+.vinyl-sheen {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg, rgba(241,238,229,0.13) 28deg, transparent 66deg,
+    transparent 180deg, rgba(241,238,229,0.09) 208deg, transparent 246deg
+  );
+}
 .vinyl-label {
-  position: absolute; inset: 30px; border-radius: 50%;
-  background: radial-gradient(circle at 40% 35%, var(--moss-bright), var(--moss-text));
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.3);
+  position: absolute; inset: 32px; border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #86ad6a, var(--moss-text) 78%);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.18);
 }
 .vinyl::after {
-  content: ""; position: absolute; inset: 40px; border-radius: 50%; background: var(--side-bg-deep);
+  content: ""; position: absolute; left: 50%; top: 50%; width: 7px; height: 7px;
+  transform: translate(-50%,-50%); border-radius: 50%;
+  background: var(--side-bg-deep); box-shadow: 0 0 0 1px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+/* little tonearm resting on the record */
+.vinyl-arm {
+  position: absolute; top: 6px; right: -6px; width: 46px; height: 3px; border-radius: 999px;
+  background: linear-gradient(90deg, rgba(241,238,229,0.5), rgba(241,238,229,0.18));
+  transform: rotate(38deg); transform-origin: right center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.vinyl-arm::before {
+  content: ""; position: absolute; left: -3px; top: -2px; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--moss-bright);
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* live waveform */
+.waveform { display: flex; align-items: center; gap: 2px; height: 26px; margin-top: 12px; }
+.waveform span {
+  flex: 1; border-radius: 1px; background: rgba(107,143,85,0.5);
+  animation: wave 1.5s ease-in-out infinite;
+}
+@keyframes wave {
+  0%, 100% { height: 18%; background: rgba(107,143,85,0.35); }
+  50% { height: 92%; background: rgba(134,173,106,0.85); }
+}
+.player-times {
+  display: flex; justify-content: space-between; margin-top: 5px;
+  font-family: var(--mono); font-size: 9.5px; color: var(--side-text-faint);
+}
 .player-meta { flex: 1; min-width: 0; }
 .player-eyebrow {
   display: inline-flex; align-items: center; gap: 7px;
@@ -807,10 +890,18 @@ a:focus-visible, button:focus-visible {
 .player-note { font-size: 13.5px; color: var(--side-text-muted); margin-top: 14px; line-height: 1.55; }
 
 /* ---------- Shuffle / playlist bits ---------- */
+/* styled like a torn jukebox ticket: notched edges + a big shuffle watermark */
 .shuffle-card {
-  border: 1px solid var(--moss); border-radius: 14px; background: var(--bone);
+  position: relative; overflow: hidden;
+  border: 1px dashed var(--moss); border-radius: 14px; background: var(--bone);
   padding: 16px 18px; box-shadow: var(--shadow-panel);
 }
+.shuffle-card::before, .shuffle-card::after {
+  content: ""; position: absolute; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--bone); border: 1px dashed var(--moss); left: -9px;
+}
+.shuffle-card::before { top: 50%; transform: translateY(-50%); }
+.shuffle-card::after { left: auto; right: -9px; top: 50%; transform: translateY(-50%); }
 .shuffle-eyebrow {
   display: flex; align-items: center; gap: 7px;
   font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em;

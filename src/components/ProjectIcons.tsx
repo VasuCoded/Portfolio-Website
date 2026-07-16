@@ -24,6 +24,23 @@ export function CollabIcon() {
   );
 }
 
+/** hand + tracked landmark points — the TouchDesigner/MediaPipe build */
+export function TouchDesignerIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M9 12V5.5a1.5 1.5 0 0 1 3 0V11m0-.5V4.5a1.5 1.5 0 0 1 3 0V11m0-.5V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6v-3a1.5 1.5 0 0 1 3 0v1"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="9" cy="5.5" r="1.3" fill="currentColor" />
+      <circle cx="18" cy="6.5" r="1.3" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function JugaadIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>

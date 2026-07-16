@@ -3,9 +3,16 @@
 export default function NowSpinning() {
   return (
     <div className="player-card">
+      <span className="player-side" aria-hidden>
+        side a
+      </span>
       <div className="player-top">
-        <div className="vinyl" aria-hidden>
-          <div className="vinyl-label" />
+        <div className="vinyl-wrap" aria-hidden>
+          <div className="vinyl">
+            <div className="vinyl-sheen" />
+            <div className="vinyl-label" />
+          </div>
+          <span className="vinyl-arm" />
         </div>
         <div className="player-meta">
           <span className="player-eyebrow">
@@ -19,8 +26,19 @@ export default function NowSpinning() {
           </span>
           <div className="player-title">Two Moons</div>
           <div className="player-artist">BoyWithUke</div>
+
+          <div className="waveform" aria-hidden>
+            {Array.from({ length: 34 }).map((_, i) => (
+              <span key={i} style={{ animationDelay: `${(i % 11) * 0.11}s` }} />
+            ))}
+          </div>
+
           <div className="player-progress" aria-hidden>
             <span className="player-progress-fill" />
+          </div>
+          <div className="player-times" aria-hidden>
+            <span>1:12</span>
+            <span>3:45</span>
           </div>
           <div className="player-controls">
             <button className="player-ctrl" aria-label="previous" title="previous">

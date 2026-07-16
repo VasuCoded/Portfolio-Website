@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import ChannelHeader from "@/components/ChannelHeader";
 import SpotlightCard from "@/components/SpotlightCard";
-import { WhatNowIcon, CollabIcon, JugaadIcon } from "@/components/ProjectIcons";
+import { WhatNowIcon, CollabIcon, JugaadIcon, TouchDesignerIcon } from "@/components/ProjectIcons";
 
 export default function Portfolio() {
   return (
@@ -167,15 +167,49 @@ export default function Portfolio() {
             </Reveal>
 
             <Reveal delay={0.16}>
-              <div className="spot-card shell">
-                <div className="spot-shell-inner">
-                  <div className="spot-shell-plus">+</div>
-                  <div className="spot-shell-title">something&apos;s coming</div>
-                  <p className="spot-shell-text">
-                    Slot 4 is reserved for the next build. I&apos;ll drop it in here soon.
+              <SpotlightCard
+                icon={<TouchDesignerIcon />}
+                accent="#3B6E8F"
+                title="Hand-Tracked Reveal"
+                tagline="A real-time TouchDesigner effect: the space between your fingers becomes a window that either reveals a bright shape, or makes you vanish into the empty room behind you."
+                meta={<span className="meta-tag">built · 2 variants</span>}
+              >
+                <div className="spot-field">
+                  <span className="spot-k">My role</span>
+                  <p>
+                    Built it end to end. Live MediaPipe hand landmarks come into TouchDesigner as
+                    data, a Python Script SOP draws a polygon between four fingertips, that renders
+                    to a black-and-white mask, and the mask gets composited over the webcam feed —
+                    then out to a real video call through Spout and OBS. A double-pinch toggles it.
                   </p>
                 </div>
-              </div>
+                <div className="spot-field">
+                  <span className="spot-k">Why it matters</span>
+                  <p>
+                    It&apos;s the capture → inference → post-process → output loop, running live at
+                    60fps. That loop is the same shape as any real-time vision system, so it&apos;s
+                    honest reps toward the drone/surveillance goal — not the same problem, but the
+                    same plumbing.
+                  </p>
+                </div>
+                <div className="spot-field">
+                  <span className="spot-k">The bug I&apos;m proud of</span>
+                  <p>
+                    The invisibility variant kept washing the frozen background over the whole frame
+                    instead of just inside the shape. Two sessions went into chasing it down the
+                    alpha channel — all wrong. Fixed it by hand instead: drop alpha entirely, use
+                    Multiply with Swap Operation Order on to cut the background to the polygon, then
+                    Over to lay it on the feed. Also learned the hard way not to read a render&apos;s
+                    resolution from the geometry that feeds it — instant cook-dependency loop.
+                  </p>
+                </div>
+                <div className="tech-chips">
+                  <span className="tech-chip">TouchDesigner</span>
+                  <span className="tech-chip">MediaPipe</span>
+                  <span className="tech-chip">Python</span>
+                  <span className="tech-chip">Spout → OBS</span>
+                </div>
+              </SpotlightCard>
             </Reveal>
           </div>
         </div>
