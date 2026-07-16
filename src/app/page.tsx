@@ -26,23 +26,30 @@ export default function Home() {
         {/* profile popout */}
         <Reveal>
           <div className="profile-card">
-            <div className="profile-banner" />
-            <div className="profile-body">
-              <div className="profile-av-wrap">
-                <motion.div
-                  className="profile-av"
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Image src="/avatar.png" alt="Vasu" width={92} height={92} priority />
-                </motion.div>
-                <span className="status-dot profile-status" />
-                <span className="profile-sticker" aria-hidden>
-                  ✦
-                </span>
+            <div className="profile-banner">
+              <div className="banner-chips">
+                <span className="banner-chip">◈ est. 2026</span>
+                <span className="banner-chip">3 channels</span>
+                <span className="banner-chip live">● 1 online</span>
               </div>
+            </div>
 
-              <div className="profile-info">
+            <div className="profile-body">
+              <div className="profile-left">
+                <div className="profile-av-wrap">
+                  <motion.div
+                    className="profile-av"
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Image src="/avatar.png" alt="Vasu" width={92} height={92} priority />
+                  </motion.div>
+                  <span className="status-dot profile-status" />
+                  <span className="profile-sticker" aria-hidden>
+                    ✦
+                  </span>
+                </div>
+
                 <h1 className="profile-name">Vasu</h1>
                 <p className="profile-handle">@_whois.vasu · drop year, 2027</p>
 
@@ -59,6 +66,17 @@ export default function Home() {
                   ))}
                 </div>
 
+                <div className="hero-actions-row" style={{ display: "flex", gap: 10, marginTop: 18, flexWrap: "wrap" }}>
+                  <a className="btn btn-fill" href="mailto:sanskar.ch.inbox@gmail.com">
+                    Email me
+                  </a>
+                  <a className="btn btn-line" href="https://github.com/VasuCoded/" target="_blank" rel="noopener">
+                    GitHub ↗
+                  </a>
+                </div>
+              </div>
+
+              <div className="profile-right">
                 <div className="profile-note">
                   <span className="profile-note-k">about me</span>
                   <p>
@@ -69,13 +87,19 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="hero-actions-row" style={{ display: "flex", gap: 10, marginTop: 16, flexWrap: "wrap" }}>
-                  <a className="btn btn-fill" href="mailto:sanskar.ch.inbox@gmail.com">
-                    Email me
-                  </a>
-                  <a className="btn btn-line" href="https://github.com/VasuCoded/" target="_blank" rel="noopener">
-                    GitHub ↗
-                  </a>
+                <div className="mini-stats">
+                  <div className="mini-stat">
+                    <span className="mini-k">building</span>
+                    <span className="mini-v">3 live</span>
+                  </div>
+                  <div className="mini-stat">
+                    <span className="mini-k">based in</span>
+                    <span className="mini-v">India</span>
+                  </div>
+                  <div className="mini-stat">
+                    <span className="mini-k">boost</span>
+                    <span className="mini-v">lvl 0</span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -469,12 +469,21 @@ a:focus-visible, button:focus-visible {
 /* Dark base + coloured glows: green and rust over *dark* reads rich, whereas
    blending them across a light gradient just turns to mud. */
 .profile-banner {
-  height: 104px; position: relative; overflow: hidden;
+  height: 88px; position: relative; overflow: hidden;
+  display: flex; align-items: flex-start; justify-content: flex-end; padding: 12px 14px;
   background:
     radial-gradient(80% 150% at 18% 125%, rgba(122,164,96,0.60), transparent 62%),
     radial-gradient(70% 140% at 78% 130%, rgba(178,84,60,0.45), transparent 62%),
     linear-gradient(180deg, #23261d 0%, #1b1d16 100%);
 }
+.banner-chips { position: relative; z-index: 2; display: flex; gap: 6px; flex-wrap: wrap; }
+.banner-chip {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.03em;
+  color: rgba(241,238,229,0.72); background: rgba(20,22,16,0.45);
+  border: 1px solid rgba(241,238,229,0.14); border-radius: 999px; padding: 3px 9px;
+  white-space: nowrap;
+}
+.banner-chip.live { color: var(--moss-bright); border-color: rgba(107,143,85,0.45); }
 /* faint dot grid, fading out toward the bottom */
 .profile-banner::before {
   content: ""; position: absolute; inset: 0;
@@ -488,7 +497,14 @@ a:focus-visible, button:focus-visible {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   opacity: 0.10;
 }
-.profile-body { padding: 0 22px 22px; }
+/* Two columns so the card actually fills its width — identity on the left,
+   the about note + stats on the right, instead of a blank right half. */
+.profile-body {
+  padding: 0 22px 22px;
+  display: grid; grid-template-columns: 1fr 0.92fr; gap: 28px; align-items: start;
+}
+.profile-left { min-width: 0; }
+.profile-right { min-width: 0; margin-top: 18px; }
 .profile-av-wrap { position: relative; width: 100px; margin-top: -46px; }
 .profile-av {
   width: 100px; height: 100px; border-radius: 24px; overflow: hidden;
@@ -504,8 +520,7 @@ a:focus-visible, button:focus-visible {
   transform: rotate(14deg); animation: sticker-wobble 5s ease-in-out infinite;
 }
 @keyframes sticker-wobble { 0%,100% { transform: rotate(14deg); } 50% { transform: rotate(-6deg) scale(1.1); } }
-.profile-info { margin-top: 12px; }
-.profile-name { font-size: clamp(26px, 4vw, 34px); font-weight: 700; letter-spacing: -0.02em; }
+.profile-name { margin-top: 12px; font-size: clamp(26px, 4vw, 34px); font-weight: 700; letter-spacing: -0.02em; }
 .profile-handle { font-family: var(--mono); font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
 .profile-roles { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
 .role-tag {
@@ -519,7 +534,7 @@ a:focus-visible, button:focus-visible {
 .role-tag:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--role) 20%, transparent); }
 .role-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--role); }
 .profile-note {
-  margin-top: 16px; padding: 12px 14px; border-radius: 10px;
+  padding: 14px 16px; border-radius: 10px;
   background: var(--bone); border: 1px solid var(--line-soft);
 }
 .profile-note-k {
@@ -527,6 +542,17 @@ a:focus-visible, button:focus-visible {
   color: var(--ink-muted); display: block; margin-bottom: 5px;
 }
 .profile-note p { font-size: 14.5px; color: var(--ink-soft); }
+
+.mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.mini-stat {
+  background: var(--bone); border: 1px solid var(--line-soft); border-radius: 10px;
+  padding: 10px 12px; display: flex; flex-direction: column; gap: 2px;
+}
+.mini-k {
+  font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+.mini-v { font-size: 14px; font-weight: 700; color: var(--moss-text); }
 
 /* ---------- Reactions ---------- */
 .reactions { display: flex; align-items: center; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
@@ -547,13 +573,22 @@ a:focus-visible, button:focus-visible {
   position: relative; border-radius: 2px; cursor: help;
   outline: none; padding: 0 2px;
 }
+/* reads as a deliberate redaction bar (slight hatch + rounded) rather than a
+   rendering glitch, and hints that it's hoverable */
 .redacted-inner {
-  background: var(--ink); color: transparent; border-radius: 2px;
-  transition: background .25s ease, color .25s ease;
+  color: transparent; border-radius: 3px;
+  background-color: #2b2a24;
+  background-image: repeating-linear-gradient(
+    45deg, rgba(255,255,255,0.05) 0 3px, transparent 3px 6px
+  );
+  box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset;
+  transition: background-color .25s ease, color .25s ease, box-shadow .25s ease;
   box-decoration-break: clone; -webkit-box-decoration-break: clone;
 }
 .redacted:hover .redacted-inner,
-.redacted:focus .redacted-inner { background: transparent; color: inherit; }
+.redacted:focus .redacted-inner {
+  background-color: transparent; background-image: none; box-shadow: none; color: inherit;
+}
 
 /* ---------- Typing indicator ---------- */
 .typing-row {
@@ -897,6 +932,8 @@ a:focus-visible, button:focus-visible {
   .drawer-panel .channel-sidebar { display: flex; }
   .portfolio-intro { flex-direction: column; align-items: flex-start; gap: 14px; }
   .nav-card-grid { grid-template-columns: 1fr; }
+  .profile-body { grid-template-columns: 1fr; gap: 18px; }
+  .profile-right { margin-top: 0; }
   .bottom-nav { display: flex; }
   /* clear the fixed bottom tab bar so the footer isn't hidden behind it */
   .content-inner { padding-bottom: 84px; }
