@@ -18,6 +18,19 @@ export default function Footer({ showWebring = false }: { showWebring?: boolean 
               alt="larpring webring"
             />
           </a>
+          <a
+            href="https://larpring.github.io/"
+            target="_blank"
+            rel="noopener"
+            aria-label="member of the larp ring"
+            style={{ display: "inline-block", marginLeft: 8, verticalAlign: "middle" }}
+          >
+            <svg width="88" height="31" viewBox="0 0 88 31" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <rect x="0.5" y="0.5" width="87" height="30" fill="#0b0d10" stroke="#3a3f4a" />
+              <text x="44" y="13" textAnchor="middle" fontFamily="var(--font-mono), monospace" fontSize="8" fontWeight={700} fill="#e8ebf0">member of the</text>
+              <text x="44" y="23" textAnchor="middle" fontFamily="var(--font-mono), monospace" fontSize="8" fontWeight={700} fill="#e8ebf0">(larp) ring</text>
+            </svg>
+          </a>
           <p className="webring-nav">
             part of the <a href="https://larpring.github.io/">larpring</a> webring
             <br />
