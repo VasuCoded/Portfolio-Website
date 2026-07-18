@@ -81,7 +81,7 @@ export default function Home() {
                 <div className="profile-note">
                   <span className="profile-note-k">📌 pinned · server info</span>
                   <p>
-                    Two channels live here right now — <strong>#yapping</strong>
+                    Two channels live here right now: <strong>#yapping</strong>
                     {" "}for music, SCP lore and whatever else I&apos;m deep in, and{" "}
                     <strong>#portfolio</strong>
                     {" "}for the stuff I&apos;ve actually built. Rail&apos;s on the left,
@@ -123,7 +123,7 @@ export default function Home() {
                 then write the specific code that&apos;s actually missing.
               </p>
               <p className="chat-line">
-                Discord is where this shows up most — bots, permissions, moderation, anti-raid
+                Discord is where this shows up most: bots, permissions, moderation, anti-raid
                 setup. A lot of what I build, on Discord and off it, comes down to the same
                 instinct: find the resourceful way to make something work with whatever&apos;s on
                 hand, then clean it up once it does. If you know the word <em>jugaad</em>,
@@ -132,8 +132,7 @@ export default function Home() {
               <p className="chat-line">
                 Right now I&apos;m on a drop year, prepping for JEE Advanced and UGEE 2027. Longer
                 term I&apos;m working toward <strong>AI systems for autonomous surveillance and
-                drone platforms</strong>
-                {" "}— the tools and ops work here are groundwork for that, even on the days it
+                drone platforms</strong>. The tools and ops work here are groundwork for that, even on the days it
                 doesn&apos;t look like it. Off the clock it&apos;s an SCP habit and a{" "}
                 <Redacted>BoyWithUke</Redacted>
                 {" "}problem; both live over in <Link href="/yapping" className="td-link">#yapping</Link>.
@@ -220,7 +219,7 @@ export default function Home() {
 
         <TypingDots />
 
-        <Footer />
+        <Footer showWebring />
       </div>
     </>
   );

@@ -45,7 +45,7 @@ export default function Portfolio() {
                 logo="/projects/whatnow.png"
                 accent="var(--moss)"
                 title="WhatNow"
-                tagline="A content platform for exam & career guidance — a Next.js site backed by a multi-channel content pipeline."
+                tagline="A content platform for exam & career guidance: a Next.js site backed by a multi-channel content pipeline."
                 meta={
                   <span className="meta-tag live">
                     <span className="dot-sm" style={{ background: "var(--moss-text)" }} />
@@ -56,7 +56,7 @@ export default function Portfolio() {
                 <div className="spot-field">
                   <span className="spot-k">My role</span>
                   <p>
-                    Founder and part of the dev team — I build site features and run the
+                    Founder and part of the dev team: I build site features and run the
                     content/ops system behind it (Discord, Sheets/Docs, and a pipeline where every
                     piece has one owner and one status).
                   </p>
@@ -64,7 +64,7 @@ export default function Portfolio() {
                 <div className="spot-field">
                   <span className="spot-k">The vision</span>
                   <p>
-                    Free, honest guidance for Indian students, no coaching kickbacks or paywall —
+                    Free, honest guidance for Indian students, no coaching kickbacks or paywall,
                     scaling across web, YouTube, Instagram, and Discord.
                   </p>
                 </div>
@@ -88,21 +88,21 @@ export default function Portfolio() {
                 icon={<CollabIcon />}
                 accent="var(--clay)"
                 title="Collab Platform"
-                tagline="A real-time team workspace — chat, task boards, shared notes, a live whiteboard, and WebRTC calls in one app."
+                tagline="A real-time team workspace: chat, task boards, shared notes, a live whiteboard, and WebRTC calls in one app."
                 meta={<span className="draft-tag">very early</span>}
               >
                 <div className="spot-field">
                   <span className="spot-k">My role</span>
                   <p>
                     Building it with a couple of friends to learn how real-time collaborative
-                    software actually works — the sync, the presence, the WebRTC plumbing.
+                    software actually works: the sync, the presence, the WebRTC plumbing.
                   </p>
                 </div>
                 <div className="spot-field">
                   <span className="spot-k">The vision</span>
                   <p>
                     Replace five open tabs with one workspace for small teams. Early and
-                    exploratory — even the name isn&apos;t final yet.
+                    exploratory. Even the name isn&apos;t final yet.
                   </p>
                 </div>
                 <div className="tech-chips">
@@ -127,7 +127,7 @@ export default function Portfolio() {
                 logo="/projects/jugaad.png"
                 accent="#7A5B1C"
                 title="Jugaad"
-                tagline="A multi-feature Discord bot — economy, moderation, mini-games, and on-the-fly image generation, self-hosted."
+                tagline="A multi-feature Discord bot: economy, moderation, mini-games, and on-the-fly image generation, self-hosted."
                 meta={
                   <span className="meta-tag live">
                     <span className="dot-sm" style={{ background: "var(--moss-text)" }} />
@@ -139,14 +139,14 @@ export default function Portfolio() {
                   <span className="spot-k">My role</span>
                   <p>
                     Built and maintain it solo on discord.js + Supabase, self-hosted on an
-                    always-on Oracle Cloud VM under PM2 — so it comes back on its own after a
+                    always-on Oracle Cloud VM under PM2, so it comes back on its own after a
                     reboot or crash.
                   </p>
                 </div>
                 <div className="spot-field">
                   <span className="spot-k">The vision</span>
                   <p>
-                    One bot that does what servers usually need five for. Public now — invite it
+                    One bot that does what servers usually need five for. Public now. Invite it
                     to any server you manage.
                   </p>
                 </div>
@@ -171,7 +171,7 @@ export default function Portfolio() {
                 logo="/projects/touchdesigner.png"
                 accent="#6B8F55"
                 title="Hand-Tracked Reveal"
-                tagline="A real-time TouchDesigner effect — frame a shape with your fingers and it becomes a window that reveals, or makes you vanish."
+                tagline="A real-time TouchDesigner effect: frame a shape with your fingers and it becomes a window that reveals, or makes you vanish."
                 meta={<span className="meta-tag">built</span>}
               >
                 <div className="spot-field">
@@ -179,7 +179,7 @@ export default function Portfolio() {
                   <p>
                     Built it end to end. Live MediaPipe hand landmarks come into TouchDesigner as
                     data, a Python Script SOP draws a polygon between four fingertips, that renders
-                    to a black-and-white mask, and the mask gets composited over the webcam feed —
+                    to a black-and-white mask, and the mask gets composited over the webcam feed,
                     then out to a real video call through Spout and OBS. A double-pinch toggles it.
                   </p>
                 </div>
@@ -188,7 +188,7 @@ export default function Portfolio() {
                   <p>
                     It&apos;s the capture → inference → post-process → output loop, running live at
                     60fps. That loop is the same shape as any real-time vision system, so it&apos;s
-                    honest reps toward the drone/surveillance goal — not the same problem, but the
+                    honest reps toward the drone/surveillance goal, not the same problem, but the
                     same plumbing.
                   </p>
                 </div>
@@ -197,10 +197,10 @@ export default function Portfolio() {
                   <p>
                     The invisibility variant kept washing the frozen background over the whole frame
                     instead of just inside the shape. Two sessions went into chasing it down the
-                    alpha channel — all wrong. Fixed it by hand instead: drop alpha entirely, use
+                    alpha channel, all wrong. Fixed it by hand instead: drop alpha entirely, use
                     Multiply with Swap Operation Order on to cut the background to the polygon, then
                     Over to lay it on the feed. Also learned the hard way not to read a render&apos;s
-                    resolution from the geometry that feeds it — instant cook-dependency loop.
+                    resolution from the geometry that feeds it: instant cook-dependency loop.
                   </p>
                 </div>
                 <div className="tech-chips">
@@ -246,7 +246,7 @@ export default function Portfolio() {
                 <p>
                   A documentation-driven Discord bot: paste its schema docs into whatever LLM chat
                   you already have open, describe the server you want, and get back a structured
-                  plan the bot validates and executes — all the thinking happens outside the bot,
+                  plan the bot validates and executes. All the thinking happens outside the bot,
                   for free. v1 is bootstrap-only: create, no destructive edits.
                 </p>
                 <div className="tech-chips">
@@ -270,8 +270,7 @@ export default function Portfolio() {
               <div className="idea-row" style={{ borderStyle: "solid" }}>
                 <span className="idea-tag">2023 · ~1yr</span>
                 <p>
-                  <strong>Event Manager, Not Your Type (Discord)</strong>
-                  {" "}— planned and hosted events for a YouTuber&apos;s community, including a
+                  <strong>Event Manager, Not Your Type (Discord)</strong>: planned and hosted events for a YouTuber&apos;s community, including a
                   live integration pulling the creator&apos;s sub count straight into the server.
                 </p>
               </div>
@@ -280,8 +279,7 @@ export default function Portfolio() {
               <div className="idea-row" style={{ borderStyle: "solid" }}>
                 <span className="idea-tag">2024 · ~6mo</span>
                 <p>
-                  <strong>Event Team, Gohar&apos;s Guide (Discord)</strong>
-                  {" "}— events and day-to-day community management for another creator&apos;s
+                  <strong>Event Team, Gohar&apos;s Guide (Discord)</strong>: events and day-to-day community management for another creator&apos;s
                   server.
                 </p>
               </div>

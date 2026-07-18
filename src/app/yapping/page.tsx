@@ -16,19 +16,19 @@ import Reactions from "@/components/Reactions";
 import { YT_CHANNELS } from "@/data/channels";
 
 const ADMIN_ARCHIVES_SAMPLE = [
-  "There Is a Light That Never Goes Out — The Smiths",
-  "Cigarettes After Sex — Sweet",
-  "Heather — Conan Gray",
-  "Kun Faya Kun — A.R. Rahman",
-  "Welcome to the Internet — Bo Burnham",
+  "There Is a Light That Never Goes Out · The Smiths",
+  "Cigarettes After Sex · Sweet",
+  "Heather · Conan Gray",
+  "Kun Faya Kun · A.R. Rahman",
+  "Welcome to the Internet · Bo Burnham",
 ];
 
 const ON_REPEAT_SAMPLE = [
-  "Tum Tak — A.R. Rahman",
-  "Mere Humsafar — Yashal Shahid",
-  "Mitwa — Shankar-Ehsaan-Loy",
-  "We Don't Talk Anymore — Charlie Puth, Selena Gomez",
-  "There Is a Light That Never Goes Out — The Smiths",
+  "Tum Tak · A.R. Rahman",
+  "Mere Humsafar · Yashal Shahid",
+  "Mitwa · Shankar-Ehsaan-Loy",
+  "We Don't Talk Anymore · Charlie Puth, Selena Gomez",
+  "There Is a Light That Never Goes Out · The Smiths",
 ];
 
 export default function Yapping() {
@@ -66,7 +66,7 @@ export default function Yapping() {
               <div className="idea-row" style={{ borderStyle: "solid", borderColor: "var(--moss)" }}>
                 <span className="idea-tag">dms open</span>
                 <p>
-                  I like to yap — SCP lore, music, whatever server problem I&apos;m mid-fix on.
+                  I like to yap: SCP lore, music, whatever server problem I&apos;m mid-fix on.
                   Add me on Discord and say something: <strong>@_whois.vasu</strong>
                 </p>
               </div>
@@ -99,7 +99,7 @@ export default function Yapping() {
                 tracks={ADMIN_ARCHIVES_SAMPLE}
               >
                 <p>
-                  Spotify Blend where our three very different tastes collide — indie and alt-rock
+                  Spotify Blend where our three very different tastes collide: indie and alt-rock
                   running straight into Bollywood soundtracks, no genre-whiplash warnings.
                 </p>
               </PlaylistCard>
@@ -163,7 +163,7 @@ export default function Yapping() {
                   <p className="v">
                     A massive, community-written fiction wiki about a secret organization that
                     finds, captures, and contains anomalous objects, entities, and locations that
-                    break the normal rules of reality — written in a dry, clinical, found-document
+                    break the normal rules of reality, written in a dry, clinical, found-document
                     style that makes the horror hit harder. No single author, no canon police,
                     thousands of contributors building the same universe one containment report at
                     a time.
@@ -173,14 +173,14 @@ export default function Yapping() {
                   <span className="k">Personal file</span>
                   <p className="v">
                     I&apos;ve read an unreasonable amount of the wiki. Was also a map developer for
-                    an SCP roleplay game on Roblox — building the containment sites players
+                    an SCP roleplay game on Roblox, building the containment sites players
                     actually walked through.
                   </p>
                 </div>
                 <div className="scp-field">
                   <span className="k">Addendum</span>
                   <p className="v">
-                    If you&apos;re into it too, come find me — I will talk about this for a
+                    If you&apos;re into it too, come find me. I will talk about this for a
                     genuinely embarrassing amount of time.
                   </p>
                 </div>
@@ -310,7 +310,7 @@ export default function Yapping() {
 
               <p className="td-text">
                 I fell into TouchDesigner recently and it&apos;s the most fun I&apos;ve had
-                building something in a while. It&apos;s node-based — you wire operators
+                building something in a while. It&apos;s node-based: you wire operators
                 together and the whole graph <em>cooks</em> live, 60 times a second. No build
                 step, no refresh. You drag a wire and the output changes while you&apos;re
                 looking at it, which makes it dangerously easy to lose three hours.
@@ -357,18 +357,18 @@ export default function Yapping() {
                 <span className="td-cta-k">◈ open invitation</span>
                 <p>
                   I&apos;m nowhere near good at this yet, so this goes both ways. If you
-                  actually know TouchDesigner — <strong>teach me something</strong>, I&apos;ll
+                  actually know TouchDesigner, <strong>teach me something</strong>. I&apos;ll
                   take any tip going. If you&apos;re just starting out, I&apos;ll happily walk
                   you through everything I&apos;ve figured out so far. And if you only want to
                   yap about node graphs, that counts too.
                 </p>
-                <span className="td-cta-handle">reach out — @_whois.vasu on Discord</span>
+                <span className="td-cta-handle">reach out · @_whois.vasu on Discord</span>
               </div>
             </div>
           </Reveal>
         </div>
 
-        <Footer />
+        <Footer showWebring />
       </div>
     </>
   );
