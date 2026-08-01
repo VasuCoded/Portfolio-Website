@@ -15,7 +15,7 @@ export default function ChatGroup({
   return (
     <div className="chat-group">
       <div className="chat-av">
-        <Image src="/avatar.png" alt="" width={40} height={40} loading="eager" />
+        <Image src="/avatar.png" alt="" width={40} height={40} />
       </div>
       <div className="chat-body">
         <div className="chat-head">

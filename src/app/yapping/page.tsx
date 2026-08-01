@@ -235,7 +235,7 @@ export default function Yapping() {
                     <ChannelIcon niche={ch.niche} />
                   </span>
                   <div className="channel-badge-logo">
-                    <Image src={ch.logo} alt={`${ch.name} logo`} width={46} height={46} loading="eager" />
+                    <Image src={ch.logo} alt={`${ch.name} logo`} width={46} height={46} />
                     <span className="channel-play" aria-hidden>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M8 5v14l11-7L8 5z" />
@@ -300,7 +300,7 @@ export default function Yapping() {
             <div className="td-card">
               <div className="td-head">
                 <div className="td-logo">
-                  <Image src="/projects/touchdesigner.png" alt="TouchDesigner" width={44} height={44} loading="eager" />
+                  <Image src="/projects/touchdesigner.png" alt="TouchDesigner" width={44} height={44} />
                 </div>
                 <div>
                   <h4>node graphs, wires, and everything running live</h4>
@@ -311,7 +311,8 @@ export default function Yapping() {
               <p className="td-text">
                 I fell into TouchDesigner recently and it&apos;s the most fun I&apos;ve had
                 building something in a while. It&apos;s node-based: you wire operators
-                together and the whole graph <em>cooks</em> live, 60 times a second. No build
+                together and the whole graph <em>cooks</em>{" "}
+                live, 60 times a second. No build
                 step, no refresh. You drag a wire and the output changes while you&apos;re
                 looking at it, which makes it dangerously easy to lose three hours.
               </p>

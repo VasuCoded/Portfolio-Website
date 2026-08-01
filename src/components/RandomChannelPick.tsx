@@ -24,7 +24,7 @@ export default function RandomChannelPick() {
         <div className="channel-pick">
           <div className="channel-pick-left">
             {ch.logo ? (
-              <Image className="channel-pick-logo" src={ch.logo} alt="" width={34} height={34} loading="eager" />
+              <Image className="channel-pick-logo" src={ch.logo} alt="" width={34} height={34} />
             ) : (
               <span className="channel-pick-logo placeholder">▶</span>
             )}

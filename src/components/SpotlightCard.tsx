@@ -64,7 +64,7 @@ export default function SpotlightCard({
       <button className="spot-card-head" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
         {logo ? (
           <div className="spot-icon spot-icon-img" style={{ ["--accent" as string]: accent } as React.CSSProperties}>
-            <Image src={logo} alt="" width={44} height={44} loading="eager" />
+            <Image src={logo} alt="" width={44} height={44} />
           </div>
         ) : (
           <div className="spot-icon" style={{ background: accent }}>

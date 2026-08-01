@@ -22,7 +22,7 @@ export default function MemberList() {
 
       <div className="member owner">
         <div className="member-av">
-          <Image src="/avatar.png" alt="" width={32} height={32} loading="eager" />
+          <Image src="/avatar.png" alt="" width={32} height={32} />
           <span className="member-presence online" />
         </div>
         <div className="member-meta">
@@ -53,7 +53,7 @@ export default function MemberList() {
       >
         <div className="member-av">
           <div className="member-bot-icon">
-            <Image src="/projects/jugaad.png" alt="" width={32} height={32} loading="eager" />
+            <Image src="/projects/jugaad.png" alt="" width={32} height={32} />
           </div>
           <span className="member-presence online" />
         </div>
