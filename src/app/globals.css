@@ -36,6 +36,29 @@
   --content-max: 920px;
 }
 
+/* Dark mode mirrors the "content" palette (canvas/cards/text/accents) one
+   for one — the sidebar/member-list/player/td-card family is already dark
+   in light mode, so it needs no override here. Elevation direction flips:
+   cards get *lighter* than canvas instead of near-white-on-beige. */
+:root[data-theme="dark"] {
+  --bone: #1C1A14;
+  --paper: #262418;
+  --paper-deep: #17160E;
+  --ink: #F1EEE5;
+  --ink-soft: #D9D4C4;
+  --ink-muted: rgba(241, 238, 229, 0.62);
+  --moss: #4F6641;
+  --moss-text: #8FBE72;
+  --moss-soft: rgba(107, 143, 85, 0.18);
+  --moss-bright: #6B8F55;
+  --clay: #B15A42;
+  --clay-text: #E08863;
+  --clay-soft: rgba(154, 74, 56, 0.22);
+  --line: rgba(241, 238, 229, 0.14);
+  --line-soft: rgba(241, 238, 229, 0.07);
+  --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.03), 0 10px 26px -12px rgba(0, 0, 0, 0.55);
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; background: var(--bone); }
 /* Atmosphere is painted straight onto the page background: two soft colour
@@ -111,9 +134,20 @@ a:focus-visible, button:focus-visible {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   opacity: 0.09;
 }
-.sidebar-header-row { padding: 12px 16px 0; }
+.sidebar-header-row {
+  padding: 12px 16px 0;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+}
 .sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--side-text); }
 .sidebar-header .status-line { font-family: var(--mono); font-size: 10.5px; color: var(--moss-bright); margin-top: 3px; }
+
+.theme-toggle {
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 30px; height: 30px; border-radius: 8px; margin-top: -2px;
+  color: var(--side-text-muted);
+  transition: background .12s ease, color .12s ease;
+}
+.theme-toggle:hover { background: var(--side-hover); color: var(--side-text); }
 .boost-bar {
   display: flex; align-items: center; gap: 8px; padding: 10px 16px 12px;
   font-family: var(--mono); font-size: 10px; color: var(--side-text-faint);
@@ -453,7 +487,7 @@ a:focus-visible, button:focus-visible {
   overflow: hidden;
 }
 .scp-doc-head {
-  background: var(--ink); color: var(--bone);
+  background: var(--side-bg-deep); color: var(--side-text);
   font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase;
   padding: 8px 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
 }
@@ -655,6 +689,7 @@ a:focus-visible, button:focus-visible {
 .chat-body { flex: 1; min-width: 0; }
 .chat-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
 .chat-name { font-size: 14.5px; font-weight: 700; color: #7a5f1f; }
+:root[data-theme="dark"] .chat-name { color: #cbb26a; }
 .chat-badge {
   font-family: var(--mono); font-size: 8.5px; font-weight: 700; letter-spacing: 0.05em;
   text-transform: uppercase; background: var(--moss); color: var(--bone);
@@ -1101,6 +1136,10 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 14px 34px -16px rgba(63,78,54,0.4), inset 0 1px 0 rgba(255,255,255,0.5);
   animation: float-cloud 7s ease-in-out infinite;
 }
+:root[data-theme="dark"] .idea-cloud {
+  background: linear-gradient(158deg, #2B2919 0%, #1E1C13 100%);
+  box-shadow: 0 14px 34px -16px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
+}
 .idea-cloud:nth-child(2) { animation-delay: -3.5s; }
 .idea-cloud::before {
   content: ""; position: absolute; left: 34px; bottom: -11px;
@@ -1108,6 +1147,7 @@ a:focus-visible, button:focus-visible {
   background: #EBE5D6; border-left: 1px solid var(--line); border-bottom: 1px solid var(--line);
   transform: rotate(45deg) skew(-6deg,-6deg);
 }
+:root[data-theme="dark"] .idea-cloud::before { background: #1E1C13; }
 .idea-cloud::after {
   content: ""; position: absolute; inset: 0; border-radius: 22px; pointer-events: none;
   background: radial-gradient(120px circle at 80% 0%, rgba(107,143,85,0.12), transparent 70%);

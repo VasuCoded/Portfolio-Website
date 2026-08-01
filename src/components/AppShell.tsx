@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import StatusTicker from "@/components/StatusTicker";
 import MemberList from "@/components/MemberList";
 import BottomNav from "@/components/BottomNav";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const CATEGORIES = [
   {
@@ -71,6 +72,7 @@ function SidebarHeader() {
           <h1>vasu&apos;s server</h1>
           <p className="status-line">● 1 member online · always</p>
         </div>
+        <ThemeToggle />
       </div>
       <div className="boost-bar" title="0 boosts. it's fine. it's fine.">
         <span className="boost-badge">◈ Lvl 0</span>

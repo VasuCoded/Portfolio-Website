@@ -31,13 +31,32 @@ export const metadata: Metadata = {
   icons: { icon: "/avatar.png" },
 };
 
+// Runs before hydration so the page never flashes the wrong theme. Falls
+// back to system preference until the visitor picks one explicitly.
+const THEME_BOOT_SCRIPT = `(function(){
+  try {
+    var stored = localStorage.getItem('theme');
+    var theme = stored === 'dark' || stored === 'light'
+      ? stored
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
+      </head>
       <body>
         <AppShell>
           <PageTransition>{children}</PageTransition>
