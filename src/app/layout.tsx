@@ -31,14 +31,13 @@ export const metadata: Metadata = {
   icons: { icon: "/avatar.png" },
 };
 
-// Runs before hydration so the page never flashes the wrong theme. Falls
-// back to system preference until the visitor picks one explicitly.
+// Runs before hydration so the page never flashes the wrong theme. Defaults
+// to light regardless of system preference until the visitor picks dark
+// explicitly via the toggle.
 const THEME_BOOT_SCRIPT = `(function(){
   try {
     var stored = localStorage.getItem('theme');
-    var theme = stored === 'dark' || stored === 'light'
-      ? stored
-      : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var theme = stored === 'dark' || stored === 'light' ? stored : 'light';
     document.documentElement.setAttribute('data-theme', theme);
   } catch (e) {}
 })();`;
