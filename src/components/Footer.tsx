@@ -50,6 +50,13 @@ export default function Footer({ showWebring = false }: { showWebring?: boolean 
         <span>@_whois.vasu on Discord</span>
       </div>
       <p>Tuned by hand, one channel at a time · © {new Date().getFullYear()} Vasu</p>
+      <p>
+        made alongside{" "}
+        <a href="https://arshnah.in" target="_blank" rel="noopener">
+          arshnah
+        </a>{" "}
+        (arshnah.in)
+      </p>
     </footer>
   );
 }
