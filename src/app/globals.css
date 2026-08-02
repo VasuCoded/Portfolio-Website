@@ -267,7 +267,7 @@ a:focus-visible, button:focus-visible {
 .content-col { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .channel-header {
   position: sticky; top: 0; z-index: 20;
-  background: rgba(231, 225, 211, 0.92);
+  background: color-mix(in srgb, var(--bone) 92%, transparent);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   padding: 14px 28px;
