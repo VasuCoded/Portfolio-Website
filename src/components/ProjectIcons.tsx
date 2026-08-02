@@ -1,5 +1,5 @@
 /** Fallback mark for projects without a real logo file.
- *  (WhatNow, Jugaad and TouchDesigner use their actual logos from
+ *  (WhatNow, After Hours and TouchDesigner use their actual logos from
  *  /public/projects — only Collab Platform still needs a drawn icon.) */
 export function CollabIcon() {
   return (

@@ -2,7 +2,7 @@
 
 import { useCycle } from "@/lib/useCycle";
 
-const WHO = ["Jugaad", "future me", "the group chat"];
+const WHO = ["After Hours", "future me", "the group chat"];
 
 export default function TypingDots() {
   const who = useCycle(WHO, 4200);

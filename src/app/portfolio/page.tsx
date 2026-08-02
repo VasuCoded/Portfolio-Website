@@ -124,9 +124,9 @@ export default function Portfolio() {
 
             <Reveal delay={0.12}>
               <SpotlightCard
-                logo="/projects/jugaad.png"
+                logo="/projects/afterhours.png"
                 accent="#7A5B1C"
-                title="Jugaad"
+                title="After Hours"
                 tagline="A multi-feature Discord bot: economy, moderation, mini-games, and on-the-fly image generation, self-hosted."
                 meta={
                   <span className="meta-tag live">
@@ -138,9 +138,12 @@ export default function Portfolio() {
                 <div className="spot-field">
                   <span className="spot-k">My role</span>
                   <p>
-                    Built and maintain it solo on discord.js + Supabase, self-hosted on an
-                    always-on Oracle Cloud VM under PM2, so it comes back on its own after a
-                    reboot or crash.
+                    Built and maintain it alongside{" "}
+                    <a href="https://arshnah.in" target="_blank" rel="noopener" className="td-link">
+                      arshnah
+                    </a>
+                    {" "}on discord.js + Supabase. Arsh self-hosts it on his always-on VPS under
+                    PM2, so it comes back on its own after a reboot or crash.
                   </p>
                 </div>
                 <div className="spot-field">
@@ -155,10 +158,10 @@ export default function Portfolio() {
                   <span className="tech-chip">Node.js 22</span>
                   <span className="tech-chip">Supabase</span>
                   <span className="tech-chip">node-canvas</span>
-                  <span className="tech-chip">PM2 · Oracle Cloud</span>
+                  <span className="tech-chip">PM2 · VPS</span>
                 </div>
                 <div className="spot-links">
-                  <a className="btn btn-fill btn-sm" href="https://jugaadbot.vercel.app/" target="_blank" rel="noopener">
+                  <a className="btn btn-fill btn-sm" href="https://afterhours.arshnah.in/" target="_blank" rel="noopener">
                     Website ↗
                   </a>
                 </div>

@@ -7,7 +7,7 @@ const STATUSES = [
   "🎧 BoyWithUke — Two Moons",
   "📖 down an SCP rabbit hole",
   "⌨️ arguing with a rate limit",
-  "🛠️ poking at Jugaad",
+  "🛠️ poking at After Hours",
   "☕ JEE prep, allegedly",
   "🗺️ redrawing a containment site",
 ];

@@ -10,11 +10,11 @@ const VASU_STATUS = [
   "⌨️ shipping something",
 ];
 
-const JUGAAD_STATUS = ["Playing /coinflip", "Rolling the dice", "Paying out rokda"];
+const AFTERHOURS_STATUS = ["Playing /coinflip", "Rolling the dice", "Paying out rokda"];
 
 export default function MemberList() {
   const vasuStatus = useCycle(VASU_STATUS, 3800);
-  const jugaadStatus = useCycle(JUGAAD_STATUS, 4600);
+  const afterhoursStatus = useCycle(AFTERHOURS_STATUS, 4600);
 
   return (
     <aside className="member-list" aria-label="members">
@@ -47,30 +47,30 @@ export default function MemberList() {
 
       <a
         className="member bot"
-        href="https://jugaadbot.vercel.app/"
+        href="https://afterhours.arshnah.in/"
         target="_blank"
         rel="noopener"
       >
         <div className="member-av">
           <div className="member-bot-icon">
-            <Image src="/projects/jugaad.png" alt="" width={32} height={32} />
+            <Image src="/projects/afterhours.png" alt="" width={32} height={32} />
           </div>
           <span className="member-presence online" />
         </div>
         <div className="member-meta">
           <div className="member-name">
-            Jugaad <span className="bot-tag">BOT</span>
+            After Hours <span className="bot-tag">BOT</span>
           </div>
           <div className="member-status">
             <AnimatePresence mode="wait">
               <motion.span
-                key={jugaadStatus}
+                key={afterhoursStatus}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                {jugaadStatus}
+                {afterhoursStatus}
               </motion.span>
             </AnimatePresence>
           </div>
