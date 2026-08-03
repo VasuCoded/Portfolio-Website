@@ -337,6 +337,7 @@ a:focus-visible, button:focus-visible {
 }
 .member-presence.online { background: var(--moss-bright); }
 .member-presence.idle { background: #c9a24a; }
+.member-presence.dnd { background: var(--clay); }
 .member-presence.offline { background: #6b6b63; }
 .member-meta { min-width: 0; }
 .member-name {
