@@ -29,6 +29,17 @@ const TABS = [
     ),
   },
   {
+    href: "/photography",
+    label: "photos",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="6" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.9" />
+        <circle cx="12" cy="13" r="3.4" stroke="currentColor" strokeWidth="1.9" />
+        <path d="M8 6l1.4-2h5.2L16 6" stroke="currentColor" strokeWidth="1.9" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
     href: "/portfolio",
     label: "portfolio",
     icon: (

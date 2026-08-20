@@ -17,6 +17,7 @@ const CATEGORIES = [
     label: "showcase",
     channels: [
       { href: "/yapping", label: "yapping" },
+      { href: "/photography", label: "photography" },
       { href: "/portfolio", label: "portfolio" },
     ],
   },

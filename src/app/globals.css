@@ -1234,3 +1234,168 @@ a:focus-visible, button:focus-visible {
   /* clear the fixed bottom tab bar so the footer isn't hidden behind it */
   .content-inner { padding-bottom: 84px; }
 }
+
+/* ============================================================================
+   #photography — industrial conveyor belt (vertical)
+   Self-contained dark "scene": its palette is fixed (not theme-linked) on
+   purpose — it reads as a machine floor in both light and dark mode.
+   ========================================================================== */
+.belt-page { display: flex; flex-direction: column; }
+
+.belt-scene {
+  --floor-a: #c7c9ce;
+  --floor-b: #b2b4ba;
+  --belt: #2b2d31;
+  --belt-tread: #3a3d42;
+  --rail-out: #e8661a;
+  --rail-in: #c94f0b;
+  --rail-shadow: #8a3a08;
+  --bolt: #dfe2e6;
+  --belt-w: 320px;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  height: clamp(460px, 82vh, 900px);
+  font-family: var(--font-oswald), "Oswald", sans-serif;
+  background-image:
+    linear-gradient(45deg, var(--floor-b) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--floor-b) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--floor-b) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--floor-b) 75%);
+  background-size: 64px 64px;
+  background-position: 0 0, 0 32px, 32px -32px, -32px 0;
+  background-color: var(--floor-a);
+  touch-action: pan-y;
+}
+/* vignette so the floor doesn't fight the belt */
+.belt-scene::before {
+  content: ""; position: absolute; inset: 0; z-index: 6; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 42%, rgba(0,0,0,0.22) 100%);
+}
+
+.belt-hint {
+  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  z-index: 7;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #4a4d52; background: rgba(255,255,255,0.62);
+  padding: 6px 13px; border-radius: 2px; white-space: nowrap;
+  transition: opacity 0.5s ease;
+}
+
+/* the vertical belt strip */
+.belt-wrap {
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  width: var(--belt-w); transform: translateX(-50%);
+  z-index: 2;
+}
+
+.rail {
+  position: absolute; top: 0; bottom: 0; width: 15px; z-index: 4;
+  background: linear-gradient(90deg, var(--rail-out), var(--rail-in));
+  box-shadow: 3px 0 0 var(--rail-shadow), 6px 0 10px rgba(0,0,0,0.35);
+}
+.rail.left { left: -7px; border-radius: 7px; }
+.rail.right { right: -7px; border-radius: 7px; box-shadow: -3px 0 0 var(--rail-shadow), -6px 0 10px rgba(0,0,0,0.35); }
+.bolt {
+  position: absolute; left: 3.5px; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--bolt); box-shadow: inset 0 1px 1px rgba(0,0,0,0.4);
+}
+
+.belt-surface {
+  position: absolute; top: 0; bottom: 0; left: 14px; right: 14px;
+  background: var(--belt); overflow: hidden;
+}
+
+/* diagonal tread chevrons flowing down; period is exactly 96px in Y (angle 150°)
+   so the idle loop and the wheel-scroll modulo both stay seamless */
+.tread-shift { position: absolute; inset: 0; will-change: transform; }
+.treads {
+  position: absolute; left: 0; right: 0; top: -120px; bottom: -120px;
+  background-image: repeating-linear-gradient(
+    150deg,
+    var(--belt-tread) 0, var(--belt-tread) 12px,
+    transparent 12px, transparent 48px
+  );
+  animation: tread-run 2.6s linear infinite;
+  will-change: transform;
+}
+@keyframes tread-run { from { transform: translateY(0); } to { transform: translateY(96px); } }
+
+.arrow-col {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-around;
+  opacity: 0.3;
+}
+.arrow-col span { font-size: 30px; line-height: 1; color: #f5b98a; font-weight: 700; }
+
+.belt-track, .loose-track { position: absolute; inset: 0; will-change: transform; }
+.belt-track { z-index: 3; }
+.loose-track { z-index: 4; }
+
+/* ---- crates (photo packages) ---- */
+.crate {
+  position: absolute;
+  width: 150px; height: 172px;
+  padding: 9px 9px 26px;
+  background: #fbfbf9;
+  box-shadow: 0 12px 20px rgba(0,0,0,0.5), 0 2px 0 rgba(0,0,0,0.25);
+  will-change: transform;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.crate.dragging { cursor: grabbing; box-shadow: 0 22px 40px rgba(0,0,0,0.6); z-index: 20; }
+.crate-img { width: 100%; height: 100%; overflow: hidden; background: #e6e6e2; }
+.crate-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.05) contrast(1.03); pointer-events: none; }
+.crate-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background:
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.03) 0 8px, transparent 8px 16px),
+    linear-gradient(135deg, #d7d7d2, #c2c2bc);
+  color: #6c6c66;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.08em;
+}
+.crate .cap {
+  position: absolute; bottom: 7px; left: 10px; right: 10px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 9.5px; letter-spacing: 0.02em; color: #34342f;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* ---- loose stencilled text ---- */
+.belt-scene .tag {
+  position: absolute;
+  background: #eef0f3; border: 2px solid #17181a; color: #17181a;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-weight: 700; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 6px 11px; box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+  white-space: nowrap; will-change: transform; user-select: none;
+}
+.belt-scene .tag.small { font-size: 10.5px; padding: 4px 9px; }
+.belt-scene .tag.warn { background: #f5c744; }
+
+@media (prefers-reduced-motion: reduce) {
+  .treads { animation: none; }
+}
+
+/* ---- reduced-motion / no-JS fallback: plain roll ---- */
+.pm-static { padding: 24px 20px 60px; }
+.pm-static-note {
+  font-family: var(--font-jetbrains-mono), monospace; font-size: 12px;
+  color: var(--ink-muted); margin: 0 0 18px;
+}
+.pm-static-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 22px; justify-items: center;
+}
+.crate.static { position: static; transform: rotate(-1.5deg); cursor: default; }
+.crate.static:nth-child(even) { transform: rotate(1.5deg); }
+
+@media (max-width: 900px) {
+  .belt-scene { height: clamp(440px, 74vh, 720px); }
+  .belt-page { padding-bottom: 84px; }
+}
