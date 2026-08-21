@@ -1376,7 +1376,16 @@ a:focus-visible, button:focus-visible {
   white-space: nowrap; will-change: transform; user-select: none;
 }
 .belt-scene .tag.small { font-size: 10.5px; padding: 4px 9px; }
-.belt-scene .tag.warn { background: #f5c744; }
+/* colour variants — spray-stencil shipping labels, dark border + hard shadow kept
+   for cohesion, text colour flipped to stay legible per background */
+.belt-scene .tag.yellow { background: #f5c744; color: #17181a; }
+.belt-scene .tag.red    { background: #d63b2f; color: #fff5f2; }
+.belt-scene .tag.blue   { background: #2f6fd6; color: #f2f6ff; }
+.belt-scene .tag.green  { background: #2e9e5b; color: #f2fff5; }
+.belt-scene .tag.pink   { background: #e0559b; color: #fff2f8; }
+.belt-scene .tag.orange { background: #e8661a; color: #fff6ef; }
+.belt-scene .tag.cyan   { background: #34c7d4; color: #10201f; }
+.belt-scene .tag.ink    { background: #17181a; color: #eef0f3; border-color: #eef0f3; box-shadow: 3px 3px 0 rgba(255,255,255,0.18); }
 
 @media (prefers-reduced-motion: reduce) {
   .treads { animation: none; }

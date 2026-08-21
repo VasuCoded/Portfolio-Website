@@ -34,24 +34,56 @@ const PHOTOS: { id: number; src: string; caption: string }[] = [
 ];
 
 // TODO: swap in your own scattered fragments — these are NOT photo captions,
-// just stray stuff riding the line along with the packages.
-const LOOSE: { id: number; text: string; variant?: "warn" | "small" }[] = [
-  { id: 1, text: "handle w/ care", variant: "warn" },
-  { id: 2, text: "roll 01" },
-  { id: 3, text: "fragile", variant: "warn" },
-  { id: 4, text: "keep dry", variant: "small" },
-  { id: 5, text: "this way up ↑" },
-  { id: 6, text: "do not bend", variant: "small" },
-  { id: 7, text: "hyderabad, 2026" },
-  { id: 8, text: "underexposed on purpose", variant: "small" },
-  { id: 9, text: "iso 3200" },
-  { id: 10, text: "lot 0447", variant: "small" },
-  { id: 11, text: "expired film", variant: "warn" },
-  { id: 12, text: "roll 02" },
-  { id: 13, text: "shutter stuck again", variant: "small" },
-  { id: 14, text: "f/1.8" },
-  { id: 15, text: "no flash", variant: "small" },
-  { id: 16, text: "grain is a feature" },
+// just stray stuff riding the line along with the packages. `color` picks a
+// label style (leave off for the plain stencil), `small` shrinks it.
+type Color = "yellow" | "red" | "blue" | "green" | "pink" | "orange" | "cyan" | "ink";
+const LOOSE: { id: number; text: string; color?: Color; small?: boolean }[] = [
+  { id: 1, text: "handle w/ care", color: "yellow" },
+  { id: 2, text: "roll 01", color: "blue" },
+  { id: 3, text: "fragile", color: "red" },
+  { id: 4, text: "keep dry", small: true },
+  { id: 5, text: "this way up ↑", color: "orange" },
+  { id: 6, text: "do not bend", color: "cyan", small: true },
+  { id: 7, text: "hyderabad, 2026", color: "green" },
+  { id: 8, text: "underexposed on purpose", color: "ink", small: true },
+  { id: 9, text: "iso 3200", color: "pink" },
+  { id: 10, text: "lot 0447", small: true },
+  { id: 11, text: "expired film", color: "yellow" },
+  { id: 12, text: "roll 02", color: "blue" },
+  { id: 13, text: "shutter stuck again", color: "red", small: true },
+  { id: 14, text: "f/1.8", color: "cyan" },
+  { id: 15, text: "no flash", small: true },
+  { id: 16, text: "grain is a feature", color: "green" },
+  { id: 17, text: "AIR CARGO", color: "orange", small: true },
+  { id: 18, text: "★ do not X-ray ★", color: "pink" },
+  { id: 19, text: "1/250s", color: "ink", small: true },
+  { id: 20, text: "backlit again", color: "blue" },
+  { id: 21, text: "sorted", color: "green", small: true },
+  { id: 22, text: "REJECT", color: "red" },
+  { id: 23, text: "keep flat", small: true },
+  { id: 24, text: "35mm", color: "cyan" },
+  { id: 25, text: "roll 03", color: "yellow" },
+  { id: 26, text: "developed at home", color: "pink", small: true },
+  { id: 27, text: "this one's blurry", color: "ink" },
+  { id: 28, text: "batch #12", color: "blue", small: true },
+  { id: 29, text: "golden hour", color: "orange" },
+  { id: 30, text: "half-frame", small: true },
+  { id: 31, text: "overexposed", color: "red", small: true },
+  { id: 32, text: "priority", color: "green" },
+  { id: 33, text: "dust on sensor", color: "cyan", small: true },
+  { id: 34, text: "roll 04", color: "yellow" },
+  { id: 35, text: "shot from the hip", color: "pink" },
+  { id: 36, text: "no tripod", color: "ink", small: true },
+  { id: 37, text: "warm white bal.", color: "orange", small: true },
+  { id: 38, text: "one more frame", color: "blue" },
+  { id: 39, text: "handle w/ care", color: "yellow", small: true },
+  { id: 40, text: "unsorted", color: "red", small: true },
+  { id: 41, text: "candid", color: "green" },
+  { id: 42, text: "vignette on purpose", color: "cyan", small: true },
+  { id: 43, text: "delivered", color: "pink", small: true },
+  { id: 44, text: "night mode off", color: "ink", small: true },
+  { id: 45, text: "f/8 and be there", color: "blue" },
+  { id: 46, text: "the keeper", color: "orange" },
 ];
 
 // ---- belt geometry (px, in belt-space) --------------------------------------
@@ -422,7 +454,7 @@ export default function PhotographyBelt() {
             {LOOSE.map((tItem, j) => (
               <div
                 key={tItem.id}
-                className={`tag${tItem.variant ? " " + tItem.variant : ""}`}
+                className={`tag${tItem.color ? " " + tItem.color : ""}${tItem.small ? " small" : ""}`}
                 ref={(el) => {
                   looseRefs.current[j] = el;
                 }}
