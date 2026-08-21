@@ -1269,7 +1269,8 @@ a:focus-visible, button:focus-visible {
   background-size: 64px 64px;
   background-position: 0 0, 0 32px, 32px -32px, -32px 0;
   background-color: var(--floor-a);
-  touch-action: pan-y;
+  /* we drive all scrolling/dragging ourselves inside the belt */
+  touch-action: none;
 }
 /* vignette so the floor doesn't fight the belt */
 .belt-scene::before {
@@ -1335,7 +1336,14 @@ a:focus-visible, button:focus-visible {
 
 .belt-track, .loose-track { position: absolute; inset: 0; will-change: transform; }
 .belt-track { z-index: 3; }
-.loose-track { z-index: 4; }
+/* the loose-text layer sits on top; make the container transparent to the
+   pointer so it can't swallow clicks meant for the photos underneath. Its
+   labels are pointer-events:none too, so nothing here blocks a drag. */
+.loose-track { z-index: 4; pointer-events: none; }
+/* let pointerdown fall through the crate layer's empty gaps to nothing, but
+   still land on the crates themselves */
+.belt-track { pointer-events: none; }
+.belt-track .crate { pointer-events: auto; }
 
 /* ---- crates (photo packages) ---- */
 .crate {
@@ -1377,6 +1385,9 @@ a:focus-visible, button:focus-visible {
   font-weight: 700; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;
   padding: 6px 11px; box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
   white-space: nowrap; will-change: transform; user-select: none;
+  /* decoration only — never intercept the pointer, or they'd block dragging a
+     photo underneath (and there are a lot of them) */
+  pointer-events: none;
 }
 .belt-scene .tag.small { font-size: 10.5px; padding: 4px 9px; }
 /* colour variants — spray-stencil shipping labels, dark border + hard shadow kept
