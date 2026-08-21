@@ -1,16 +1,15 @@
 "use client";
 
 import ChannelHeader from "@/components/ChannelHeader";
-import Footer from "@/components/Footer";
 import PhotographyBelt from "@/components/PhotographyBelt";
 
 export default function Photography() {
   return (
     <>
-      <ChannelHeader name="photography" topic="packages on a belt · scroll to run it" />
+      <ChannelHeader name="photography" topic="an endless belt · scroll to run it" />
+      {/* fills the viewport; the belt loops, so the page itself never scrolls */}
       <div className="belt-page">
         <PhotographyBelt />
-        <Footer />
       </div>
     </>
   );

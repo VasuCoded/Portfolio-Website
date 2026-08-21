@@ -1240,7 +1240,9 @@ a:focus-visible, button:focus-visible {
    Self-contained dark "scene": its palette is fixed (not theme-linked) on
    purpose — it reads as a machine floor in both light and dark mode.
    ========================================================================== */
-.belt-page { display: flex; flex-direction: column; }
+/* fill the space under the channel header so nothing sits below the belt to
+   scroll to — the belt loops and owns all the scrolling itself */
+.belt-page { flex: 1; display: flex; flex-direction: column; min-height: 0; }
 
 .belt-scene {
   --floor-a: #c7c9ce;
@@ -1256,7 +1258,8 @@ a:focus-visible, button:focus-visible {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  height: clamp(460px, 82vh, 900px);
+  flex: 1;
+  min-height: 460px;
   font-family: var(--font-oswald), "Oswald", sans-serif;
   background-image:
     linear-gradient(45deg, var(--floor-b) 25%, transparent 25%),
@@ -1405,6 +1408,7 @@ a:focus-visible, button:focus-visible {
 .crate.static:nth-child(even) { transform: rotate(1.5deg); }
 
 @media (max-width: 900px) {
-  .belt-scene { height: clamp(440px, 74vh, 720px); }
-  .belt-page { padding-bottom: 84px; }
+  /* reserve room for the fixed bottom tab bar so the belt ends above it */
+  .belt-page { padding-bottom: 68px; }
+  .belt-scene { min-height: 380px; }
 }
