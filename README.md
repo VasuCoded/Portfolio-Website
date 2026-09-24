@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# vasu's server
 
-## Getting Started
+A personal site built to look and work like a Discord server: a channel
+sidebar, a live member list, and pages styled as channels. Live at
+https://vasucoded.vercel.app/
 
-First, run the development server:
+## What's on it
+
+- **#welcome**: a profile card, a quick-facts panel, and a canvas whiteboard
+  you can draw on
+- **#yapping**: music (a "now spinning" player, two playlists, a shuffle
+  track picker), an SCP Foundation write-up with a random fact generator,
+  four YouTube channel cards, and notes on learning TouchDesigner
+- **#portfolio**: project cards for WhatNow, Collab Platform, the After
+  Hours Discord bot, and a TouchDesigner build, plus two unbuilt ideas and
+  past community/event work
+- **#photography**: a top-down conveyor belt scene, DOM elements animated
+  with refs and requestAnimationFrame, scroll-jacked so wheel/touch input
+  drives the belt instead of the page
+
+Also: a member list sidebar with real Discord presence pulled from the
+public Lanyard API, light/dark theme toggle, animated page transitions
+(Framer Motion), and a bottom nav bar for mobile.
+
+## Stack
+
+Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, Framer
+Motion. No database or CMS: content (songs, channels, SCP facts) lives in
+static TypeScript files under `src/data`.
+
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open http://localhost:3000.
