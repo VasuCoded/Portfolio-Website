@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import ChannelHeader from "@/components/ChannelHeader";
 import SpotlightCard from "@/components/SpotlightCard";
-import { CollabIcon } from "@/components/ProjectIcons";
+import { BotIcon, CollabIcon, PaperIcon } from "@/components/ProjectIcons";
 
 export default function Portfolio() {
   return (
@@ -15,7 +15,17 @@ export default function Portfolio() {
           <div className="portfolio-intro">
             <p style={{ fontSize: 15, color: "var(--ink-soft)", maxWidth: 620 }}>
               Most of this exists for one reason: I wanted to know how the thing actually works,
-              so I built one. Click a card to open it up.
+              so I built one. Click a card to open it up. This site counts too: it&apos;s built
+              with Next.js and the{" "}
+              <a
+                href="https://github.com/VasuCoded/Portfolio-Website"
+                target="_blank"
+                rel="noopener"
+                className="td-link"
+              >
+                source is on GitHub
+              </a>
+              .
             </p>
             <a
               className="btn btn-line btn-sm"
@@ -40,6 +50,59 @@ export default function Portfolio() {
           </Reveal>
 
           <div className="spotlight-grid">
+            <Reveal delay={0.02}>
+              <SpotlightCard
+                icon={<PaperIcon />}
+                accent="#40617D"
+                title="PaperFlow"
+                tagline="Printed CBSE question papers from a reviewed bank, and practice built from each student's mistakes."
+                meta={
+                  <span className="meta-tag live">
+                    <span className="dot-sm" style={{ background: "var(--moss-text)" }} />
+                    live
+                  </span>
+                }
+              >
+                <div className="spot-field">
+                  <span className="spot-k">What it does</span>
+                  <p>
+                    A multi-tenant question bank and mistake-practice platform for classes 9 to 12.
+                    Tests stay on paper: teachers generate and print them, students log which
+                    questions they got wrong, and the app turns those mistakes into practice on
+                    exactly those topics. No scores, no ranks.
+                  </p>
+                </div>
+                <div className="spot-field">
+                  <span className="spot-k">Under the hood</span>
+                  <p>
+                    A paper generator with a multi-set shuffle engine (up to four sets of one paper,
+                    each with its own print-ready answer key). Every institute&apos;s data is walled
+                    off with row-level security in Postgres, not just in the app. Maths and
+                    chemistry render server-side with KaTeX. 275 tests.
+                  </p>
+                </div>
+                <div className="tech-chips">
+                  <span className="tech-chip">Next.js</span>
+                  <span className="tech-chip">TypeScript</span>
+                  <span className="tech-chip">Supabase</span>
+                  <span className="tech-chip">Postgres · RLS</span>
+                  <span className="tech-chip">KaTeX</span>
+                  <span className="tech-chip">Vercel</span>
+                </div>
+                <div className="spot-links">
+                  <a className="btn btn-fill btn-sm" href="https://paperflowindia.vercel.app/" target="_blank" rel="noopener">
+                    Live site ↗
+                  </a>
+                  <a className="btn btn-line btn-sm" href="https://github.com/VasuCoded/PaperFlow" target="_blank" rel="noopener">
+                    GitHub ↗
+                  </a>
+                </div>
+                <p className="spot-private">
+                  Accounts are invite-only, so the live link opens at a sign-in page.
+                </p>
+              </SpotlightCard>
+            </Reveal>
+
             <Reveal delay={0.04}>
               <SpotlightCard
                 logo="/projects/whatnow.png"
@@ -65,7 +128,8 @@ export default function Portfolio() {
                   <span className="spot-k">The vision</span>
                   <p>
                     Free, honest guidance for Indian students, no coaching kickbacks or paywall,
-                    scaling across web, YouTube, Instagram, and Discord.
+                    scaling across web, YouTube, Instagram, and Discord. Bilingual, in English and
+                    Hindi.
                   </p>
                 </div>
                 <div className="tech-chips">
@@ -88,7 +152,7 @@ export default function Portfolio() {
                 icon={<CollabIcon />}
                 accent="var(--clay)"
                 title="Collab Platform"
-                tagline="A real-time team workspace: chat, task boards, shared notes, a live whiteboard, and WebRTC calls in one app."
+                tagline="A real-time team workspace: chat, task boards, shared notes, a live whiteboard, reminders, and peer-to-peer WebRTC voice and video calls in one app."
                 meta={<span className="draft-tag">very early</span>}
               >
                 <div className="spot-field">
@@ -153,6 +217,13 @@ export default function Portfolio() {
                     to any server you manage.
                   </p>
                 </div>
+                <div className="spot-field">
+                  <span className="spot-k">The website</span>
+                  <p>
+                    A public docs site that pulls live leaderboards and server activity straight
+                    from the bot&apos;s own API.
+                  </p>
+                </div>
                 <div className="tech-chips">
                   <span className="tech-chip">discord.js v14</span>
                   <span className="tech-chip">Node.js 22</span>
@@ -214,15 +285,41 @@ export default function Portfolio() {
                 </div>
               </SpotlightCard>
             </Reveal>
+
+            <Reveal delay={0.2}>
+              <SpotlightCard
+                icon={<BotIcon />}
+                accent="#5B5F97"
+                title="Server bots"
+                tagline="Smaller custom Discord bots built for specific communities, each doing one job."
+                meta={<span className="meta-tag">dormant</span>}
+              >
+                <div className="spot-field">
+                  <span className="spot-k">What&apos;s in it</span>
+                  <p>
+                    Three bots for one debate server, split up so each only gets the permissions it
+                    needs: a verification bot that hands out the member role after a random rules
+                    quiz question, an official bot that posts rules, announcements and the weekly
+                    debate topic, and a moderation bot for source-checking claims, reports, an
+                    anonymous arena and a steelman gate.
+                  </p>
+                </div>
+                <div className="tech-chips">
+                  <span className="tech-chip">discord.js v14</span>
+                  <span className="tech-chip">Node.js</span>
+                </div>
+                <p className="spot-private">Repo is private for now.</p>
+              </SpotlightCard>
+            </Reveal>
           </div>
         </div>
 
-        {/* ---------------- IDEAS (dreamy, moved up) ---------------- */}
+        {/* ---------------- GOING PUBLIC SOON ---------------- */}
         <div className="section-gap">
           <Reveal>
             <div className="block-head">
-              <div className="block-tag ideas-tag">✦ in the idea box</div>
-              <p className="block-topic">not built yet, but living rent-free in my head</p>
+              <div className="block-tag ideas-tag">✦ going public soon</div>
+              <p className="block-topic">being built, not public yet</p>
             </div>
           </Reveal>
 
@@ -240,10 +337,37 @@ export default function Portfolio() {
                   <span className="tech-chip">CLIP</span>
                   <span className="tech-chip">Qdrant</span>
                   <span className="tech-chip">MinIO</span>
+                  <span className="tech-chip">Docker</span>
                 </div>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
+              <div className="idea-cloud">
+                <div className="idea-cloud-name">AC circuit visualizer</div>
+                <p>
+                  Another TouchDesigner hand-tracking build: a gesture-controlled AC circuit
+                  visualizer that you open by pinching the air.
+                </p>
+                <div className="tech-chips">
+                  <span className="tech-chip">TouchDesigner</span>
+                  <span className="tech-chip">hand tracking</span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* ---------------- IDEAS (dreamy, moved up) ---------------- */}
+        <div className="section-gap">
+          <Reveal>
+            <div className="block-head">
+              <div className="block-tag ideas-tag">✦ in the idea box</div>
+              <p className="block-topic">not built yet, but living rent-free in my head</p>
+            </div>
+          </Reveal>
+
+          <div className="idea-clouds">
+            <Reveal delay={0.04}>
               <div className="idea-cloud">
                 <div className="idea-cloud-name">Server-builder bot</div>
                 <p>
@@ -259,6 +383,27 @@ export default function Portfolio() {
               </div>
             </Reveal>
           </div>
+        </div>
+
+        {/* ---------------- STACK ---------------- */}
+        <div className="section-gap">
+          <Reveal>
+            <div className="block-head">
+              <div className="block-tag"># what I build with</div>
+            </div>
+          </Reveal>
+          <Reveal delay={0.04}>
+            <div className="tech-chips" style={{ marginTop: 14 }}>
+              {[
+                "JavaScript", "TypeScript", "Python", "HTML", "CSS",
+                "Next.js", "React", "Tailwind", "Node.js", "discord.js",
+                "Supabase", "Postgres", "FastAPI", "Docker", "Redis",
+                "Vercel", "Nginx", "Git", "Arch Linux",
+              ].map((t) => (
+                <span key={t} className="tech-chip">{t}</span>
+              ))}
+            </div>
+          </Reveal>
         </div>
 
         {/* ---------------- EXPERIENCE ---------------- */}
