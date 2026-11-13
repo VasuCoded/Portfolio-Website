@@ -13,7 +13,8 @@ https://vasucoded.vercel.app/
   four YouTube channel cards, and notes on learning TouchDesigner
 - **#portfolio**: project cards for PaperFlow, WhatNow, Collab Platform, the
   After Hours Minecraft server + bridge bot,
-  the After Hours members website, and a
+  the After Hours members website, the Off The Record debate server and bot,
+  and a
   TouchDesigner build, plus ideas in progress and past community/event work
 - **#photography**: currently an SCP-style "in containment" coming-soon
   notice. The unfinished conveyor-belt gallery is parked in

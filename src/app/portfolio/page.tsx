@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import ChannelHeader from "@/components/ChannelHeader";
 import SpotlightCard from "@/components/SpotlightCard";
-import { BotIcon, CollabIcon, PaperIcon } from "@/components/ProjectIcons";
+import { CollabIcon, PaperIcon } from "@/components/ProjectIcons";
 
 export default function Portfolio() {
   return (
@@ -361,25 +361,57 @@ export default function Portfolio() {
 
             <Reveal delay={0.2}>
               <SpotlightCard
-                icon={<BotIcon />}
+                logo="/projects/otr.png"
                 accent="#5B5F97"
-                title="Server bots"
-                tagline="Smaller custom Discord bots built for specific communities, each doing one job."
-                meta={<span className="meta-tag">dormant</span>}
+                title="Off The Record"
+                tagline="A Discord server for talking politics with people our age, without performing an opinion for an audience, and the bot that runs it."
+                meta={
+                  <span className="meta-tag live">
+                    <span className="dot-sm" style={{ background: "var(--moss-text)" }} />
+                    live
+                  </span>
+                }
               >
                 <div className="spot-field">
-                  <span className="spot-k">What&apos;s in it</span>
+                  <span className="spot-k">The server</span>
                   <p>
-                    Three bots for one debate server, split up so each only gets the permissions it
-                    needs: a verification bot that hands out the member role after a random rules
-                    quiz question, an official bot that posts rules, announcements and the weekly
-                    debate topic, and a moderation bot for source-checking claims, reports, an
-                    anonymous arena and a steelman gate.
+                    I built and run it: a charter and seven-section rules, weekly official debates
+                    alongside community ones, a moderation team with a public mod log, and
+                    anonymous reports. The whole server, every channel, role and permission, is
+                    defined in one file, and a setup script builds it from that. Re-running it
+                    changes nothing unless the file changed.
+                  </p>
+                </div>
+                <div className="spot-field">
+                  <span className="spot-k">The bot</span>
+                  <p>
+                    One bot that replaced the three I started with. It gates entry behind a random
+                    rules-quiz question, publishes the charter, rules and guides from JSON and edits
+                    them in place, and runs the debate lifecycle: topic votes, before/after polls,
+                    Open and Closed tags, promoting a community debate to an official one, and
+                    posting results. Moderation actions turn into public mod-log entries where the
+                    moderator shows only as &ldquo;Staff&rdquo;; the named copy stays private.
+                  </p>
+                </div>
+                <div className="spot-field">
+                  <span className="spot-k">Where it runs</span>
+                  <p>
+                    Moved off an ad-gated free host onto the same Oracle Cloud VM as my other bots,
+                    with push-to-deploy and its live state kept outside the code so a deploy never
+                    touches it.
                   </p>
                 </div>
                 <div className="tech-chips">
                   <span className="tech-chip">discord.js v14</span>
                   <span className="tech-chip">Node.js</span>
+                  <span className="tech-chip">Forum channels</span>
+                  <span className="tech-chip">Oracle Cloud</span>
+                  <span className="tech-chip">GitHub Actions</span>
+                </div>
+                <div className="spot-links">
+                  <a className="btn btn-fill btn-sm" href="https://discord.gg/ffcHnuTqPP" target="_blank" rel="noopener">
+                    Join the server ↗
+                  </a>
                 </div>
                 <p className="spot-private">Repo is private for now.</p>
               </SpotlightCard>
