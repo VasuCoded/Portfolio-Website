@@ -52,8 +52,8 @@ export default function Photography() {
               <div className="scp-field">
                 <span className="k">Description</span>
                 <p className="v">
-                  VASU-PH-07 is a collection of seven (7) photographs taken by the site&apos;s
-                  owner, currently awaiting cataloguing. When displayed, the images arrive on a
+                  VASU-PH-07 is a collection of <Redacted>an undisclosed number of</Redacted>{" "}
+                  photographs taken by the site&apos;s owner, currently awaiting cataloguing. When displayed, the images arrive on a
                   moving industrial belt. Attempts to view them in a plain grid have been{" "}
                   <Redacted>unsatisfying</Redacted>.
                 </p>
