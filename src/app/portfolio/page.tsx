@@ -508,7 +508,7 @@ export default function Portfolio() {
           </div>
         </div>
 
-        <Footer showWebring />
+        <Footer />
       </div>
     </>
   );

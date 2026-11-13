@@ -369,7 +369,7 @@ export default function Yapping() {
           </Reveal>
         </div>
 
-        <Footer showWebring />
+        <Footer />
       </div>
     </>
   );

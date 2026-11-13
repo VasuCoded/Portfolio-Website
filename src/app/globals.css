@@ -444,12 +444,6 @@ a:focus-visible, button:focus-visible {
 .site-footer a { color: var(--ink-muted); text-decoration: underline; text-underline-offset: 3px; }
 .footer-links { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 12px; }
 .footer-links a, .footer-links span { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); }
-.webring { text-align: center; padding-bottom: 24px; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
-.webring img { display: inline-block; border-radius: 4px; border: 1px solid var(--line); }
-.webring-nav { font-family: var(--mono); font-size: 11.5px; color: var(--ink-muted); margin-top: 12px; }
-.webring-nav a { color: var(--ink-muted); text-decoration: none; }
-.webring-nav a:hover { color: var(--moss-text); }
-.webring-nav .sep { opacity: .5; margin: 0 8px; }
 
 /* ---------- Status / online dot ---------- */
 .status-dot {

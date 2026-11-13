@@ -219,7 +219,7 @@ export default function Home() {
 
         <TypingDots />
 
-        <Footer showWebring />
+        <Footer />
       </div>
     </>
   );
