@@ -186,57 +186,130 @@ export default function Portfolio() {
               </SpotlightCard>
             </Reveal>
 
-            <Reveal delay={0.12}>
+            <Reveal delay={0.14}>
               <SpotlightCard
                 logo="/projects/afterhours.png"
-                accent="#7A5B1C"
-                title="After Hours"
-                tagline="A multi-feature Discord bot: economy, moderation, mini-games, and on-the-fly image generation, self-hosted."
+                accent="#4E7A34"
+                title="After Hours × Minecraft"
+                tagline="Set up the community's Minecraft server and built the Discord bot that bridges it: two-way chat, live game events, and a self-serve whitelist."
                 meta={
                   <span className="meta-tag live">
                     <span className="dot-sm" style={{ background: "var(--moss-text)" }} />
-                    active
+                    live
                   </span>
                 }
               >
                 <div className="spot-field">
-                  <span className="spot-k">My role</span>
+                  <span className="spot-k">The constraint</span>
                   <p>
-                    Built and maintain it alongside{" "}
-                    <a href="https://arshnah.in" target="_blank" rel="noopener" className="td-link">
-                      arshnah
-                    </a>
-                    {" "}on discord.js + Supabase. Arsh self-hosts it on his always-on VPS under
-                    PM2, so it comes back on its own after a reboot or crash.
+                    The Minecraft server runs on a friend&apos;s VPS, and all I have is its Crafty
+                    Controller web panel: no SSH, no plugin access. So the bot never talks to the
+                    game. It reads the live console over the panel&apos;s websocket, parses chat,
+                    joins, deaths and advancements out of raw log lines, and answers with{" "}
+                    <code>tellraw</code> commands sent through the panel&apos;s API. Players show
+                    up in Discord under their own name and skin head.
                   </p>
                 </div>
                 <div className="spot-field">
-                  <span className="spot-k">The vision</span>
+                  <span className="spot-k">The server</span>
                   <p>
-                    One bot that does what servers usually need five for. Public now. Invite it
-                    to any server you manage.
+                    A Fabric 26.3 server I configure entirely through that same panel API:
+                    teleports and three homes per player (Essential Commands), real permissions
+                    instead of handing out op (LuckPerms), proper skins on an offline-mode server
+                    (SkinRestorer), graves that keep your items when you die, inventory sorting,
+                    and Lithium and FerriteCore to keep it fast and light on memory.
                   </p>
                 </div>
                 <div className="spot-field">
-                  <span className="spot-k">The website</span>
+                  <span className="spot-k">The bug I&apos;m proud of catching</span>
                   <p>
-                    A public docs site that pulls live leaderboards and server activity straight
-                    from the bot&apos;s own API.
+                    The server runs in offline mode, and vanilla <code>whitelist add</code> stores
+                    Mojang UUIDs that never match an offline player. Turning the whitelist on would
+                    have locked everyone out, me included. The bot writes{" "}
+                    <code>whitelist.json</code> itself with offline UUIDs (an MD5 of{" "}
+                    <code>OfflinePlayer:&lt;name&gt;</code>) and hot-reloads it, so{" "}
+                    <code>/whitelist add</code> links exactly one name to each Discord account.
+                  </p>
+                </div>
+                <div className="spot-field">
+                  <span className="spot-k">Where it runs</span>
+                  <p>
+                    An Oracle Cloud free-tier VM I set up as a home for all my bots: each one gets
+                    its own systemd service, Linux user, secrets file and logs. A push to GitHub
+                    runs the tests, then deploys over SSH with a key that can only run that one
+                    bot&apos;s deploy script.
                   </p>
                 </div>
                 <div className="tech-chips">
                   <span className="tech-chip">discord.js v14</span>
-                  <span className="tech-chip">Node.js 22</span>
+                  <span className="tech-chip">Node.js</span>
+                  <span className="tech-chip">WebSocket</span>
+                  <span className="tech-chip">SQLite</span>
+                  <span className="tech-chip">Oracle Cloud</span>
+                  <span className="tech-chip">systemd</span>
+                  <span className="tech-chip">GitHub Actions</span>
+                  <span className="tech-chip">Fabric · Crafty</span>
+                </div>
+                <p className="spot-private">Repo is private for now.</p>
+              </SpotlightCard>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <SpotlightCard
+                logo="/projects/afterhours.png"
+                accent="#B4551F"
+                title="After Hours: the website"
+                tagline="A members-only site for a ~120-person Hinglish Discord server: anonymous reviews of each other, AI-written reports, and the server's whole history rebuilt from chat exports."
+                meta={
+                  <span className="meta-tag live">
+                    <span className="dot-sm" style={{ background: "var(--moss-text)" }} />
+                    live
+                  </span>
+                }
+              >
+                <div className="spot-field">
+                  <span className="spot-k">What it does</span>
+                  <p>
+                    Members sign in with Discord (the site checks they&apos;re actually in the
+                    server), then fill in a &ldquo;vibe check&rdquo; about each other: open writing,
+                    hypotheticals and one-liners. Each member page turns that into a report with an
+                    AI summary, anonymous comments, and their own file from the server&apos;s
+                    history.
+                  </p>
+                </div>
+                <div className="spot-field">
+                  <span className="spot-k">Built for anonymity</span>
+                  <p>
+                    Nobody, admins included, can see who wrote what. Writers can switch on
+                    &ldquo;disguise my writing&rdquo; so an AI rewords their answers and readers only
+                    ever see the rewrite. Moderation works on the content, never the author.
+                  </p>
+                </div>
+                <div className="spot-field">
+                  <span className="spot-k">The history</span>
+                  <p>
+                    A build pipeline turns the server&apos;s raw chat exports into eleven chapters:
+                    an iconic-messages wall, month-by-month charts, a &ldquo;Who said it?&rdquo;
+                    game, head-to-heads and a sortable numbers table.
+                  </p>
+                </div>
+                <div className="tech-chips">
+                  <span className="tech-chip">Next.js 16</span>
+                  <span className="tech-chip">Server Actions</span>
                   <span className="tech-chip">Supabase</span>
-                  <span className="tech-chip">node-canvas</span>
-                  <span className="tech-chip">PM2 · VPS</span>
+                  <span className="tech-chip">Postgres</span>
+                  <span className="tech-chip">Discord OAuth</span>
+                  <span className="tech-chip">Motion</span>
+                  <span className="tech-chip">Vercel</span>
                 </div>
                 <div className="spot-links">
-                  <a className="btn btn-fill btn-sm" href="https://afterhours.arshnah.in/" target="_blank" rel="noopener">
-                    Website ↗
+                  <a className="btn btn-fill btn-sm" href="https://afterhours-discord.vercel.app" target="_blank" rel="noopener">
+                    Live site ↗
                   </a>
                 </div>
-                <p className="spot-private">Repo is private for now while it&apos;s in development.</p>
+                <p className="spot-private">
+                  The members area is behind Discord sign-in, and the repo is private.
+                </p>
               </SpotlightCard>
             </Reveal>
 
@@ -397,8 +470,8 @@ export default function Portfolio() {
               {[
                 "JavaScript", "TypeScript", "Python", "HTML", "CSS",
                 "Next.js", "React", "Tailwind", "Node.js", "discord.js",
-                "Supabase", "Postgres", "FastAPI", "Docker", "Redis",
-                "Vercel", "Nginx", "Git", "Arch Linux",
+                "Supabase", "Postgres", "SQLite", "FastAPI", "Docker", "Redis",
+                "Vercel", "Oracle Cloud", "Nginx", "systemd", "GitHub Actions", "Git", "Arch Linux",
               ].map((t) => (
                 <span key={t} className="tech-chip">{t}</span>
               ))}

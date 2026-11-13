@@ -11,12 +11,13 @@ https://vasucoded.vercel.app/
 - **#yapping**: music (a "now spinning" player, two playlists, a shuffle
   track picker), an SCP Foundation write-up with a random fact generator,
   four YouTube channel cards, and notes on learning TouchDesigner
-- **#portfolio**: project cards for WhatNow, Collab Platform, the After
-  Hours Discord bot, and a TouchDesigner build, plus two unbuilt ideas and
-  past community/event work
-- **#photography**: a top-down conveyor belt scene, DOM elements animated
-  with refs and requestAnimationFrame, scroll-jacked so wheel/touch input
-  drives the belt instead of the page
+- **#portfolio**: project cards for PaperFlow, WhatNow, Collab Platform, the
+  After Hours Minecraft server + bridge bot,
+  the After Hours members website, and a
+  TouchDesigner build, plus ideas in progress and past community/event work
+- **#photography**: currently an SCP-style "in containment" coming-soon
+  notice. The unfinished conveyor-belt gallery is parked in
+  `src/components/PhotographyBelt.tsx` until it's ready
 
 Also: a member list sidebar with real Discord presence pulled from the
 public Lanyard API, light/dark theme toggle, animated page transitions
